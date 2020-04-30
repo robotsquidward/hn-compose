@@ -52,6 +52,11 @@ dependencies {
     implementation "androidx.ui:ui-material:$compose_version"
     implementation "androidx.ui:ui-tooling:$compose_version"
 
+    // Retrofit Dependencies
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+
     testImplementation "junit:junit:4.13"
 
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
