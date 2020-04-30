@@ -20,31 +20,36 @@ import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.example.hncompose.TopNewsStatus.stories
+import com.example.hncompose.network.HNItem
 
 @Model
 object TopNewsStatus {
-    val stories: List<String> = listOf(
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story One",
-            "Story Two",
-            "Story Three"
+    val stories: List<HNItem> = listOf(
+        HNItem(
+            id = 0,
+            title = "Story Title",
+            url = "google.com"
+        ),
+        HNItem(
+            id = 0,
+            title = "Story Title",
+            url = "google.com"
+        ),
+        HNItem(
+            id = 0,
+            title = "Story Title",
+            url = "google.com"
+        ),
+        HNItem(
+            id = 0,
+            title = "Story Title",
+            url = "google.com"
+        ),
+        HNItem(
+            id = 0,
+            title = "Story Title",
+            url = "google.com"
+        )
     )
 }
 
@@ -68,24 +73,24 @@ fun TopNewsScreen(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
                         title = { Text(text = "HN Compose") }
                 )
             },
-            bodyContent = { TopNewsScreenBody(posts = stories) }
+            bodyContent = { TopNewsScreenBody(stories = stories) }
     )
 }
 
 @Composable
 fun TopNewsScreenBody(
-        posts: List<String>) {
+        stories: List<HNItem>) {
     VerticalScroller {
         Column {
-            posts.forEach { post ->
-                StoryCard(story = post)
+            stories.forEach { story ->
+                StoryCard(story = story)
             }
         }
     }
 }
 
 @Composable
-fun StoryCard(story: String) {
+fun StoryCard(story: HNItem) {
     Card(
             shape = RoundedCornerShape(size = 6.dp),
             elevation = 4.dp,
@@ -104,7 +109,7 @@ fun StoryCard(story: String) {
         ) {
             Column {
                 Text(
-                    text = "Hello $story!",
+                    text = "Hello ${story.title}!",
                     modifier = Modifier
                         .padding(
                             start = 8.dp,
@@ -114,7 +119,7 @@ fun StoryCard(story: String) {
                         )
                 )
                 Text(
-                    text = "($story)",
+                    text = "(${story.url})",
                     modifier = Modifier
                         .padding(
                             top = 0.dp,
