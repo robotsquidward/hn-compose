@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="HN_Compose.app" target="1.8" />
+      <module name="HN_Compose.hackernetwork" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

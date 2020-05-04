@@ -1,9 +1,9 @@
 package com.example.hncompose
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.compose.Model
 import androidx.compose.remember
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
@@ -19,41 +19,19 @@ import androidx.ui.text.TextStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
-import com.example.hncompose.TopNewsStatus.stories
-import com.example.hncompose.network.HNItem
-
-@Model
-object TopNewsStatus {
-    val stories: List<HNItem> = listOf(
-        HNItem(
-            id = 0,
-            title = "Story Title",
-            url = "google.com"
-        ),
-        HNItem(
-            id = 0,
-            title = "Story Title",
-            url = "google.com"
-        ),
-        HNItem(
-            id = 0,
-            title = "Story Title",
-            url = "google.com"
-        ),
-        HNItem(
-            id = 0,
-            title = "Story Title",
-            url = "google.com"
-        ),
-        HNItem(
-            id = 0,
-            title = "Story Title",
-            url = "google.com"
-        )
-    )
-}
+import com.example.hackernetwork.HNItem
+import com.example.hackernetwork.HackerNewsRepo
+import com.example.hackernetwork.HackerNewsRetrofit
+import com.example.hncompose.util.createWithFactory
 
 class MainActivity : AppCompatActivity() {
+
+    private val topStoriesViewModel: HackerNewsViewModel by viewModels {
+        createWithFactory {
+            HackerNewsViewModel(repo = HackerNewsRepo(HackerNewsRetrofit.retrofitInstance))
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -61,6 +39,8 @@ class MainActivity : AppCompatActivity() {
                 TopNewsScreen()
             }
         }
+
+        topStoriesViewModel.getTopStories()
     }
 }
 
@@ -73,7 +53,7 @@ fun TopNewsScreen(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
                         title = { Text(text = "HN Compose") }
                 )
             },
-            bodyContent = { TopNewsScreenBody(stories = stories) }
+            bodyContent = { TopNewsScreenBody(stories = AppDataStatus.topStories) }
     )
 }
 
@@ -105,7 +85,9 @@ fun StoryCard(story: HNItem) {
     ) {
         Clickable(
                 modifier = Modifier.ripple(),
-                onClick = {/* todo */}
+                onClick = {
+                    println("Story: ${story.title}")
+                }
         ) {
             Column {
                 Text(

@@ -1,4 +1,4 @@
-package com.example.hncompose.network
+package com.example.hackernetwork
 
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -25,6 +25,24 @@ class HackerNewsRepo(private val hackerNewsRetrofit: Retrofit) {
      */
     suspend fun getTopStories(): Response<MutableList<Int>> {
         return hackerNewsRetrofit.create(HackerNewsAPI::class.java).getTopStories()
+    }
+
+    /**
+     * Get the list of the current New story ID's
+     *
+     * @return [Response] wrapping a list of New story id's
+     */
+    suspend fun getNewStories(): Response<MutableList<Int>> {
+        return hackerNewsRetrofit.create(HackerNewsAPI::class.java).getNewStories()
+    }
+
+    /**
+     * Get the list of the current Job story ID's
+     *
+     * @return [Response] wrapping a list of Job story id's
+     */
+    suspend fun getJobStories(): Response<MutableList<Int>> {
+        return hackerNewsRetrofit.create(HackerNewsAPI::class.java).getJobStories()
     }
 
 }

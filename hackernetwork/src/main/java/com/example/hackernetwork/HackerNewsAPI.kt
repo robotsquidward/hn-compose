@@ -1,4 +1,4 @@
-package com.example.hncompose.network
+package com.example.hackernetwork
 
 import retrofit2.Response
 import retrofit2.http.GET
@@ -7,7 +7,7 @@ import retrofit2.http.Path
 interface HackerNewsAPI {
 
     @GET("item/{id}")
-    suspend fun getItem(@Path(value = "id") id: String): Response<HNItem>
+    suspend fun getItem(@Path("id") id: String): Response<HNItem>
 
     @GET("topstories")
     suspend fun getTopStories(): Response<MutableList<Int>>

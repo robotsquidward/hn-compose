@@ -1,4 +1,4 @@
-package com.example.hncompose.network
+package com.example.hackernetwork
 
 import okhttp3.Interceptor
 import okhttp3.Response
