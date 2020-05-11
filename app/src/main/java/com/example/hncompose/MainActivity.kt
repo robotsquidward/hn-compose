@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                TopNewsScreen()
+                TopNewsScreen(AppDataStatus)
             }
         }
 
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun TopNewsScreen(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
+fun TopNewsScreen(appStatus: AppDataStatusHolder, scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
     Scaffold(
             scaffoldState = scaffoldState,
             topAppBar = {
@@ -53,7 +53,7 @@ fun TopNewsScreen(scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
                         title = { Text(text = "HN Compose") }
                 )
             },
-            bodyContent = { TopNewsScreenBody(stories = AppDataStatus.topStories) }
+            bodyContent = { TopNewsScreenBody(stories = appStatus.topStories) }
     )
 }
 
@@ -123,6 +123,6 @@ fun StoryCard(story: HNItem) {
 @Composable
 fun DefaultPreview() {
     MaterialTheme {
-        TopNewsScreen()
+        TopNewsScreen(MockAppDataStatus)
     }
 }

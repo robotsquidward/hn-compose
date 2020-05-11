@@ -40,7 +40,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     // Retrofit Dependencies
-    api "com.squareup.retrofit2:retrofit:2.6.2"
+    api "com.squareup.retrofit2:retrofit:2.6.2"// provide basic Retrofit dependencies to consumer
     implementation "com.squareup.retrofit2:converter-gson:2.6.2"
     implementation "com.squareup.okhttp3:logging-interceptor:4.4.0"
 
