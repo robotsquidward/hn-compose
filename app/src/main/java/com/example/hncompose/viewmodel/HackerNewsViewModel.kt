@@ -1,9 +1,10 @@
-package com.example.hncompose
+package com.example.hncompose.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackernetwork.HNItem
 import com.example.hackernetwork.HackerNewsRepo
+import com.example.hncompose.AppDataStatus
 import kotlinx.coroutines.launch
 
 /**
@@ -91,7 +92,8 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
     private fun getTopStoryChunkDetails(chunkIndex: Int = 0) {
         if (chunkIndex in AppDataStatus.topStoryIdChunks.indices) {
             viewModelScope.launch {
-                AppDataStatus.topStories.addAll(AppDataStatus.topStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
+                AppDataStatus.topStories.addAll(
+                    AppDataStatus.topStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                     return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
                 })
             }
@@ -101,7 +103,8 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
     private fun getNewStoryChunkDetails(chunkIndex: Int = 0) {
         if (chunkIndex in AppDataStatus.newStoryIdChunks.indices) {
             viewModelScope.launch {
-                AppDataStatus.newStories.addAll(AppDataStatus.newStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
+                AppDataStatus.newStories.addAll(
+                    AppDataStatus.newStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                     return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
                 })
             }
@@ -111,7 +114,8 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
     private fun getJobStoryChunkDetails(chunkIndex: Int = 0) {
         if (chunkIndex in AppDataStatus.jobStoryIdChunks.indices) {
             viewModelScope.launch {
-                AppDataStatus.jobStories.addAll(AppDataStatus.jobStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
+                AppDataStatus.jobStories.addAll(
+                    AppDataStatus.jobStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                     return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
                 })
             }

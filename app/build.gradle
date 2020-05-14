@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    def compose_version = "0.1.0-dev09"
+    def compose_version = "0.1.0-dev10"
 
     // Our Networking Library for Hacker News
     implementation project(":hackernetwork")
@@ -51,6 +51,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.fragment:fragment-ktx:1.2.4"
     implementation "com.google.android.material:material:1.1.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-rc01"
 
     // Compose Dependencies
     implementation "androidx.ui:ui-framework:$compose_version"
