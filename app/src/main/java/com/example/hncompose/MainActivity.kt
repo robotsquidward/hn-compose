@@ -1,21 +1,20 @@
 package com.example.hncompose
 
 import android.os.Bundle
-import android.widget.Adapter
 import androidx.activity.viewModels
-import androidx.animation.TweenBuilder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.compose.Observe
 import androidx.compose.remember
-import androidx.ui.core.DensityAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
-import androidx.ui.foundation.*
-import androidx.ui.foundation.gestures.DragDirection
+import androidx.ui.foundation.Clickable
+import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.layout.*
+import androidx.ui.layout.Column
+import androidx.ui.layout.fillMaxWidth
+import androidx.ui.layout.padding
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.text.TextStyle
@@ -25,7 +24,8 @@ import androidx.ui.unit.sp
 import com.example.hackernetwork.HNItem
 import com.example.hackernetwork.HackerNewsRepo
 import com.example.hackernetwork.HackerNewsRetrofit
-import com.example.hncompose.util.*
+import com.example.hncompose.util.createWithFactory
+import com.example.hncompose.util.shortUrlString
 import com.example.hncompose.viewmodel.HackerNewsViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -44,7 +44,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                TopNewsScreen(AppDataStatus)
+                TopNewsScreen(
+                    appStatus = AppDataStatus,
+                    loadMoreTopStoriesClicked = {
+                        topStoriesViewModel.getNextTopNewsChunk()
+                    }
+                )
             }
         }
 
@@ -53,7 +58,11 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun TopNewsScreen(appStatus: AppDataStatusHolder, scaffoldState: ScaffoldState = remember { ScaffoldState() }) {
+fun TopNewsScreen(
+    appStatus: AppDataStatusHolder,
+    loadMoreTopStoriesClicked: () -> Unit,
+    scaffoldState: ScaffoldState = remember { ScaffoldState() }
+) {
     Scaffold(
             scaffoldState = scaffoldState,
             topAppBar = {
@@ -61,20 +70,26 @@ fun TopNewsScreen(appStatus: AppDataStatusHolder, scaffoldState: ScaffoldState =
                         title = { Text(text = "HN Compose") }
                 )
             },
-            bodyContent = { TopNewsScreenBody(stories = appStatus.topStories) }
+            bodyContent = {
+                TopNewsScreenBody(
+                    stories = appStatus.topStories,
+                    loadMoreTopStoriesClicked = loadMoreTopStoriesClicked
+                )
+            }
     )
 }
 
 @Composable
 fun TopNewsScreenBody(
-        stories: List<HNItem>) {
+        stories: List<HNItem>,
+        loadMoreTopStoriesClicked: () -> Unit) {
     VerticalScroller {
         Column {
             stories.forEach { story ->
                 StoryCard(story = story)
             }
             if (stories.isNotEmpty()) {
-                LoadMoreCard()
+                LoadMoreCard(loadMoreTopStoriesClicked = loadMoreTopStoriesClicked)
             }
         }
     }
@@ -131,7 +146,7 @@ fun StoryCard(story: HNItem) {
 }
 
 @Composable
-fun LoadMoreCard() {
+fun LoadMoreCard(loadMoreTopStoriesClicked: () -> Unit) {
     Card(
         shape = RoundedCornerShape(size = 0.dp),
         elevation = 0.dp,
@@ -148,9 +163,7 @@ fun LoadMoreCard() {
             text = {
                 Text(text = "Load More")
             },
-            onClick = {
-                println("Load more clicked")
-            }
+            onClick = loadMoreTopStoriesClicked
         )
     }
 }
@@ -159,6 +172,6 @@ fun LoadMoreCard() {
 @Composable
 fun DefaultPreview() {
     MaterialTheme {
-        TopNewsScreen(MockAppDataStatus)
+        TopNewsScreen(MockAppDataStatus, {})
     }
 }
