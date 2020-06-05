@@ -1,5 +1,6 @@
 package com.example.hncompose.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackernetwork.HNItem
@@ -87,6 +88,8 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
         getJobStoryChunkDetails(nextChunkIndex(AppDataStatus.jobStories.size))
     }
 
+    val listenerHandler: HackerNewsListenerHandler = HackerNewsListenerHandler()
+
     // region Private Functions
 
     private fun getTopStoryChunkDetails(chunkIndex: Int = 0) {
@@ -127,5 +130,11 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
     }
 
     // endregion Private Functions
+
+    inner class HackerNewsListenerHandler (
+        val handleLoadMoreTopStories: () -> Unit = { getNextTopNewsChunk() },
+        val handleLoadMoreNewStories: () -> Unit = { getNextNewNewsChunk() },
+        val handleLoadMoreJobStories: () -> Unit = { getNextJobNewsChunk() }
+    )
 
 }

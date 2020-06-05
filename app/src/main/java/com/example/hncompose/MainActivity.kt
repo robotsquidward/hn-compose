@@ -1,6 +1,7 @@
 package com.example.hncompose
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
@@ -46,9 +47,7 @@ class MainActivity : AppCompatActivity() {
             MaterialTheme {
                 TopNewsScreen(
                     appStatus = AppDataStatus,
-                    loadMoreTopStoriesClicked = {
-                        topStoriesViewModel.getNextTopNewsChunk()
-                    }
+                    listenerHandler = topStoriesViewModel.listenerHandler
                 )
             }
         }
@@ -60,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun TopNewsScreen(
     appStatus: AppDataStatusHolder,
-    loadMoreTopStoriesClicked: () -> Unit,
+    listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler?,
     scaffoldState: ScaffoldState = remember { ScaffoldState() }
 ) {
     Scaffold(
@@ -73,7 +72,7 @@ fun TopNewsScreen(
             bodyContent = {
                 TopNewsScreenBody(
                     stories = appStatus.topStories,
-                    loadMoreTopStoriesClicked = loadMoreTopStoriesClicked
+                    listenerHandler = listenerHandler
                 )
             }
     )
@@ -82,14 +81,18 @@ fun TopNewsScreen(
 @Composable
 fun TopNewsScreenBody(
         stories: List<HNItem>,
-        loadMoreTopStoriesClicked: () -> Unit) {
+        listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler?) {
     VerticalScroller {
         Column {
             stories.forEach { story ->
                 StoryCard(story = story)
             }
             if (stories.isNotEmpty()) {
-                LoadMoreCard(loadMoreTopStoriesClicked = loadMoreTopStoriesClicked)
+                LoadMoreCard(
+                    loadMoreCardClicked = (listenerHandler?.handleLoadMoreTopStories ?: {
+                        println("Listener handler is null")
+                    })
+                )
             }
         }
     }
@@ -146,7 +149,7 @@ fun StoryCard(story: HNItem) {
 }
 
 @Composable
-fun LoadMoreCard(loadMoreTopStoriesClicked: () -> Unit) {
+fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
     Card(
         shape = RoundedCornerShape(size = 0.dp),
         elevation = 0.dp,
@@ -163,7 +166,7 @@ fun LoadMoreCard(loadMoreTopStoriesClicked: () -> Unit) {
             text = {
                 Text(text = "Load More")
             },
-            onClick = loadMoreTopStoriesClicked
+            onClick = loadMoreCardClicked
         )
     }
 }
@@ -172,6 +175,6 @@ fun LoadMoreCard(loadMoreTopStoriesClicked: () -> Unit) {
 @Composable
 fun DefaultPreview() {
     MaterialTheme {
-        TopNewsScreen(MockAppDataStatus, {})
+        TopNewsScreen(MockAppDataStatus, listenerHandler = null)
     }
 }
