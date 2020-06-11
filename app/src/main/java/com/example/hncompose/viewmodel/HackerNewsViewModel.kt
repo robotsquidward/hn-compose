@@ -115,8 +115,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
             viewModelScope.launch {
                 AppDataStatus.topStories.addAll(
                     AppDataStatus.topStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
-                    return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
-                })
+                        return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
+                    }
+                )
             }
         }
     }
@@ -126,8 +127,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
             viewModelScope.launch {
                 AppDataStatus.newStories.addAll(
                     AppDataStatus.newStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
-                    return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
-                })
+                        return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
+                    }
+                )
             }
         }
     }
@@ -137,8 +139,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
             viewModelScope.launch {
                 AppDataStatus.jobStories.addAll(
                     AppDataStatus.jobStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
-                    return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
-                })
+                        return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
+                    }
+                )
             }
         }
     }
