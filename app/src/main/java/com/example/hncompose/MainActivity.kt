@@ -47,7 +47,10 @@ class MainActivity : AppCompatActivity() {
             MaterialTheme {
                 TopNewsScreen(
                     appStatus = AppDataStatus,
-                    listenerHandler = topStoriesViewModel.listenerHandler
+                    listenerHandler = topStoriesViewModel.listenerHandler,
+                    storyClickedListener = { storyUrl ->
+                        topStoriesViewModel.storyClicked(storyUrl, this)
+                    }
                 )
             }
         }
@@ -60,6 +63,7 @@ class MainActivity : AppCompatActivity() {
 fun TopNewsScreen(
     appStatus: AppDataStatusHolder,
     listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler?,
+    storyClickedListener: (String?) -> Unit,
     scaffoldState: ScaffoldState = remember { ScaffoldState() }
 ) {
     Scaffold(
@@ -72,7 +76,8 @@ fun TopNewsScreen(
             bodyContent = {
                 TopNewsScreenBody(
                     stories = appStatus.topStories,
-                    listenerHandler = listenerHandler
+                    listenerHandler = listenerHandler,
+                    storyClickedListener = storyClickedListener
                 )
             }
     )
@@ -81,11 +86,12 @@ fun TopNewsScreen(
 @Composable
 fun TopNewsScreenBody(
         stories: List<HNItem>,
-        listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler?) {
+        listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler?,
+        storyClickedListener: (String?) -> Unit) {
     VerticalScroller {
         Column {
             stories.forEach { story ->
-                StoryCard(story = story)
+                StoryCard(story = story, storyClickedListener = storyClickedListener)
             }
             if (stories.isNotEmpty()) {
                 LoadMoreCard(
@@ -99,7 +105,7 @@ fun TopNewsScreenBody(
 }
 
 @Composable
-fun StoryCard(story: HNItem) {
+fun StoryCard(story: HNItem, storyClickedListener: (String?) -> Unit) {
     Card(
             shape = RoundedCornerShape(size = 6.dp),
             elevation = 4.dp,
@@ -116,6 +122,8 @@ fun StoryCard(story: HNItem) {
                 modifier = Modifier.ripple(),
                 onClick = {
                     println("Story: ${story.title}")
+                    println(story.url)
+                    storyClickedListener.invoke(story.url)
                 }
         ) {
             Column {
@@ -175,6 +183,6 @@ fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
 @Composable
 fun DefaultPreview() {
     MaterialTheme {
-        TopNewsScreen(MockAppDataStatus, listenerHandler = null)
+        TopNewsScreen(MockAppDataStatus, listenerHandler = null, storyClickedListener = {})
     }
 }

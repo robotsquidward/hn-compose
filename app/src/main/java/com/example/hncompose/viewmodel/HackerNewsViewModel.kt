@@ -1,11 +1,15 @@
 package com.example.hncompose.viewmodel
 
-import androidx.lifecycle.LiveData
+import android.content.Context
+import android.content.res.Resources
+import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackernetwork.HNItem
 import com.example.hackernetwork.HackerNewsRepo
 import com.example.hncompose.AppDataStatus
+import com.example.hncompose.R
 import kotlinx.coroutines.launch
 
 /**
@@ -89,6 +93,20 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
     }
 
     val listenerHandler: HackerNewsListenerHandler = HackerNewsListenerHandler()
+
+    /**
+     * Callback to notify the VM to launch a Custom Tabs Intent to selected URL.
+     */
+    fun storyClicked(url: String?, context: Context) {
+        url?.also {
+            CustomTabsIntent.Builder()
+                .setToolbarColor(context.getColor(R.color.purple500))
+                .build()
+                .apply {
+                    launchUrl(context, Uri.parse(url))
+                }
+        }
+    }
 
     // region Private Functions
 
