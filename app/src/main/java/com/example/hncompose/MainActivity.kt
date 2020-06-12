@@ -1,23 +1,23 @@
 package com.example.hncompose
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.remember
+import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Clickable
+import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.layout.Column
-import androidx.ui.layout.fillMaxWidth
-import androidx.ui.layout.padding
+import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
+import androidx.ui.res.vectorResource
 import androidx.ui.text.TextStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
@@ -75,6 +75,7 @@ fun TopNewsScreen(
             },
             bodyContent = {
                 TopNewsScreenBody(
+                    loading = appStatus.loading,
                     stories = appStatus.topStories,
                     listenerHandler = listenerHandler,
                     storyClickedListener = storyClickedListener
@@ -85,6 +86,7 @@ fun TopNewsScreen(
 
 @Composable
 fun TopNewsScreenBody(
+        loading: Boolean,
         stories: List<HNItem>,
         listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler?,
         storyClickedListener: (String?) -> Unit) {
@@ -97,7 +99,8 @@ fun TopNewsScreenBody(
                 LoadMoreCard(
                     loadMoreCardClicked = (listenerHandler?.handleLoadMoreTopStories ?: {
                         println("Listener handler is null")
-                    })
+                    }),
+                    loading = loading
                 )
             }
         }
@@ -157,25 +160,48 @@ fun StoryCard(story: HNItem, storyClickedListener: (String?) -> Unit) {
 }
 
 @Composable
-fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
-    Card(
-        shape = RoundedCornerShape(size = 0.dp),
-        elevation = 0.dp,
-        modifier = Modifier
-            .padding(
-                start = 8.dp,
-                end = 8.dp,
-                top = 4.dp,
-                bottom = 4.dp
-            )
-            .fillMaxWidth()
-    ) {
+fun LoadMoreCard(loading: Boolean, loadMoreCardClicked: () -> Unit) {
+    Column {
         Button(
             text = {
                 Text(text = "Load More")
             },
-            onClick = loadMoreCardClicked
+            onClick = loadMoreCardClicked,
+            modifier = Modifier
+                .padding(
+                    start = 8.dp,
+                    end = 8.dp,
+                    top = 4.dp,
+                    bottom = 8.dp
+                )
+                .fillMaxWidth()
         )
+
+        if (loading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .height(50.dp)
+                    .width(50.dp)
+                    .padding(8.dp)
+                    .fillMaxWidth()
+                    .gravity(align = Alignment.CenterHorizontally)
+            )
+        } else {
+            Image(
+                asset = vectorResource(id = R.drawable.ic_launcher_foreground),
+                modifier = Modifier
+                    .height(50.dp)
+                    .width(50.dp)
+                    .padding(
+                        top = 0.dp,
+                        bottom = 8.dp,
+                        start = 8.dp,
+                        end = 8.dp
+                    )
+                    .fillMaxWidth()
+                    .gravity(Alignment.CenterHorizontally)
+            )
+        }
     }
 }
 

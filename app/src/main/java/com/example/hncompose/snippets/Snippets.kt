@@ -16,7 +16,7 @@ fun ScrollingStoryList(stories: List<HNItem>) {
                 StoryCard(story = story, storyClickedListener = {})
             }
             if (stories.isNotEmpty()) {
-                LoadMoreCard {}
+                LoadMoreCard(loading = false) {}
             }
         }
     }

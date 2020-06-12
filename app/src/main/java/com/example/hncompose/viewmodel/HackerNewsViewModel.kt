@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.res.Resources
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackernetwork.HNItem
@@ -27,7 +29,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
      */
     fun getTopStories(fresh: Boolean = true) {
         if (fresh || AppDataStatus.topStories.isNullOrEmpty()) {
+            AppDataStatus.loading = true
             viewModelScope.launch {
+                AppDataStatus.loading = false
                 val response = repo.getTopStories()
                 response.body()?.let { topStoryIds ->
                     AppDataStatus.topStoryIdChunks = topStoryIds.chunked(pageSize)
@@ -44,7 +48,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
      */
     fun getNewStories(fresh: Boolean = false) {
         if (fresh || AppDataStatus.newStories.isNullOrEmpty()) {
+            AppDataStatus.loading = true
             viewModelScope.launch {
+                AppDataStatus.loading = false
                 val response = repo.getNewStories()
                 response.body()?.let { newStoryIds ->
                     AppDataStatus.newStoryIdChunks = newStoryIds.chunked(pageSize)
@@ -61,7 +67,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
      */
     fun getJobStories(fresh: Boolean = false) {
         if (fresh || AppDataStatus.jobStories.isNullOrEmpty()) {
+            AppDataStatus.loading = true
             viewModelScope.launch {
+                AppDataStatus.loading = false
                 val response = repo.getJobStories()
                 response.body()?.let { jobStoryIds ->
                     AppDataStatus.jobStoryIdChunks = jobStoryIds.chunked(pageSize)
@@ -112,19 +120,23 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
     private fun getTopStoryChunkDetails(chunkIndex: Int = 0) {
         if (chunkIndex in AppDataStatus.topStoryIdChunks.indices) {
+            AppDataStatus.loading = true
             viewModelScope.launch {
                 AppDataStatus.topStories.addAll(
                     AppDataStatus.topStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                         return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
                     }
                 )
+                AppDataStatus.loading = false
             }
         }
     }
 
     private fun getNewStoryChunkDetails(chunkIndex: Int = 0) {
         if (chunkIndex in AppDataStatus.newStoryIdChunks.indices) {
+            AppDataStatus.loading = true
             viewModelScope.launch {
+                AppDataStatus.loading = false
                 AppDataStatus.newStories.addAll(
                     AppDataStatus.newStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                         return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
@@ -136,7 +148,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
     private fun getJobStoryChunkDetails(chunkIndex: Int = 0) {
         if (chunkIndex in AppDataStatus.jobStoryIdChunks.indices) {
+            AppDataStatus.loading = true
             viewModelScope.launch {
+                AppDataStatus.loading = false
                 AppDataStatus.jobStories.addAll(
                     AppDataStatus.jobStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                         return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
