@@ -1,7 +1,6 @@
 package com.example.hncompose.snippets
 
 import androidx.compose.Composable
-import androidx.compose.Pivotal
 import androidx.compose.remember
 import androidx.compose.stateFor
 import androidx.ui.core.Modifier
@@ -13,6 +12,9 @@ import androidx.ui.layout.Column
 import androidx.compose.setValue
 import androidx.compose.getValue
 
+/**
+ * A custom vertical list for 'smooth scrolling' like RecyclerView. Taken from #compose channel.
+ */
 private const val threshold = 200f
 @Composable
 fun <T: Any>VerticalList(modifier: Modifier = Modifier, data: List<T>, itemCallback: @Composable() (T) -> Unit) {
@@ -54,20 +56,20 @@ fun <T: Any>VerticalList(modifier: Modifier = Modifier, data: List<T>, itemCallb
                 }
             }) {
                 for (i in firstVisibleItem..lastVisibleItem) {
-                    VerticalListItem(
-                        item = data[i],
-                        onPositioned = { height ->
-                            itemHeightArray[i] = height.toFloat() // remember height
-                        },
-                        itemCallback = itemCallback
-                    )
+//                    VerticalListItem(
+//                        item = data[i],
+//                        onPositioned = { height ->
+//                            itemHeightArray[i] = height.toFloat() // remember height
+//                        },
+//                        itemCallback = itemCallback
+//                    )
                 }
             }
         }
     }
 }
 
-@Composable
-fun <T: Any>VerticalListItem(@Pivotal item: T, onPositioned: (Int) -> Unit, itemCallback: @Composable() (T) -> Unit) {
-    Box(modifier = Modifier.onPositioned { onPositioned(it.size.height.value) }, children = { itemCallback(item) })
-}
+//@Composable
+//fun <T: Any>VerticalListItem(@Pivotal item: T, onPositioned: (Int) -> Unit, itemCallback: @Composable() (T) -> Unit) {
+//    Box(modifier = Modifier.onPositioned { onPositioned(it.size.height.value) }, children = { itemCallback(item) })
+//}
