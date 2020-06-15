@@ -1,18 +1,27 @@
 package com.example.hncompose.viewmodel
 
 import android.content.Context
-import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.Uri
+import android.util.Log
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackernetwork.HNItem
 import com.example.hackernetwork.HackerNewsRepo
 import com.example.hncompose.AppDataStatus
 import com.example.hncompose.R
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.IOException
+import java.net.URI
+
 
 /**
  * Activity View Model for the [MainActivity] that manages Hacker News data from
@@ -121,10 +130,14 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
     private fun getTopStoryChunkDetails(chunkIndex: Int = 0) {
         if (chunkIndex in AppDataStatus.topStoryIdChunks.indices) {
             AppDataStatus.loading = true
-            viewModelScope.launch {
+            viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
+                Log.d("CO_EX", throwable.localizedMessage ?: "Coroutine failed to handle exception.")
+            }) {
                 AppDataStatus.topStories.addAll(
                     AppDataStatus.topStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
-                        return@mapIndexed repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
+                        val item = repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
+                        item.favicon = downloadImageFrom(item.url)
+                        return@mapIndexed item
                     }
                 )
                 AppDataStatus.loading = false
@@ -162,6 +175,24 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
     private fun nextChunkIndex(listSize: Int, chunkSize: Int = pageSize): Int {
         return listSize / chunkSize
+    }
+
+    /**
+     * Util function to download a favicon given a url.
+     */
+    private suspend fun downloadImageFrom(imageUrl: String?): Bitmap? {
+        return withContext(Dispatchers.IO) {
+            val uri = URI(imageUrl ?: "https://news.ycombinator.com")
+            val domain = uri.host
+            val domainUrl = if (domain.startsWith("www.")) domain.substring(4) else domain
+            val iconUrl = "https://icons.duckduckgo.com/ip2/${domainUrl}.ico"
+            try {
+                return@withContext Picasso.get().load(iconUrl).get()
+            } catch (exception: IOException) {
+                Log.d("PICASSO_EX", exception.localizedMessage ?: "Picasso get() failed.")
+                return@withContext null
+            }
+        }
     }
 
     // endregion Private Functions

@@ -1,5 +1,6 @@
 package com.example.hackernetwork
 
+import android.graphics.Bitmap
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -41,5 +42,8 @@ data class HNItem(
     var score: Int? = null,
     var title: String? = null,
     var parts: MutableList<Int>? = null,
-    var descendants: Int? = null
+    var descendants: Int? = null,
+
+    // App specific attribute, not from the HN API
+    var favicon: Bitmap? = null
 )
