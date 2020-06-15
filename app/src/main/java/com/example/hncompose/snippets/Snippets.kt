@@ -16,7 +16,7 @@ fun ScrollingStoryList(stories: List<HNItem>) {
                 StoryCard(story = story, storyClickedListener = {})
             }
             if (stories.isNotEmpty()) {
-                LoadMoreCard {}
+                LoadMoreCard(loading = false) {}
             }
         }
     }
@@ -29,9 +29,9 @@ fun AdapterStoryList(stories: List<HNItem>) {
     }
 }
 
-@Composable
-fun CustomVerticalStoryList(stories: List<HNItem>) {
-    VerticalList(data = stories) { story ->
-        StoryCard(story = story, storyClickedListener = {})
-    }
-}
+//@Composable
+//fun CustomVerticalStoryList(stories: List<HNItem>) {
+//    VerticalList(data = stories) { story ->
+//        StoryCard(story = story, storyClickedListener = {})
+//    }
+//}

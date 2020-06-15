@@ -24,6 +24,8 @@ interface AppDataStatusHolder {
     var topStoryIdChunks: List<List<Int>>
     var newStoryIdChunks: List<List<Int>>
     var jobStoryIdChunks: List<List<Int>>
+
+    var loading: Boolean
 }
 
 @Model
@@ -35,6 +37,8 @@ object AppDataStatus: AppDataStatusHolder {
     override var topStoryIdChunks: List<List<Int>> = emptyList()
     override var newStoryIdChunks: List<List<Int>> = emptyList()
     override var jobStoryIdChunks: List<List<Int>> = emptyList()
+
+    override var loading: Boolean = false
 }
 
 @Model
@@ -55,6 +59,8 @@ object MockAppDataStatus: AppDataStatusHolder {
     override var topStoryIdChunks: List<List<Int>> = emptyList()
     override var newStoryIdChunks: List<List<Int>> = emptyList()
     override var jobStoryIdChunks: List<List<Int>> = emptyList()
+
+    override var loading: Boolean = false
 }
 
 /**
