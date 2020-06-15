@@ -1,3 +1,4 @@
 include ':hackernetwork'
 include ':app'
 rootProject.name = "HN Compose"
+include ':util'

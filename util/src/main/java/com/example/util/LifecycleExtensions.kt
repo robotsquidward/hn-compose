@@ -1,4 +1,4 @@
-package com.example.hncompose.util
+package com.example.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

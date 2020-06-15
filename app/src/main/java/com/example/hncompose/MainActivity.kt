@@ -1,12 +1,10 @@
 package com.example.hncompose
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.remember
-import androidx.lifecycle.ViewModelProvider
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
@@ -16,10 +14,8 @@ import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
-import androidx.ui.graphics.ImageAsset
 import androidx.ui.graphics.asImageAsset
 import androidx.ui.layout.*
-import androidx.ui.layout.ColumnScope.gravity
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
@@ -30,11 +26,9 @@ import androidx.ui.unit.sp
 import com.example.hackernetwork.HNItem
 import com.example.hackernetwork.HackerNewsRepo
 import com.example.hackernetwork.HackerNewsRetrofit
-import com.example.hncompose.util.createWithFactory
-import com.example.hncompose.util.shortUrlString
 import com.example.hncompose.viewmodel.HackerNewsViewModel
-import com.squareup.picasso.Picasso
-import java.net.URI
+import com.example.util.createWithFactory
+import com.example.util.shortUrlString
 
 class MainActivity : AppCompatActivity() {
 
