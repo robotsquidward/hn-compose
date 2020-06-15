@@ -1,10 +1,12 @@
 package com.example.hncompose
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.remember
+import androidx.lifecycle.ViewModelProvider
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
@@ -14,7 +16,10 @@ import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.Color
+import androidx.ui.graphics.ImageAsset
+import androidx.ui.graphics.asImageAsset
 import androidx.ui.layout.*
+import androidx.ui.layout.ColumnScope.gravity
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
@@ -28,6 +33,8 @@ import com.example.hackernetwork.HackerNewsRetrofit
 import com.example.hncompose.util.createWithFactory
 import com.example.hncompose.util.shortUrlString
 import com.example.hncompose.viewmodel.HackerNewsViewModel
+import com.squareup.picasso.Picasso
+import java.net.URI
 
 class MainActivity : AppCompatActivity() {
 
@@ -129,31 +136,54 @@ fun StoryCard(story: HNItem, storyClickedListener: (String?) -> Unit) {
                     storyClickedListener.invoke(story.url)
                 }
         ) {
-            Column {
-                Text(
-                    text = story.title ?: "",
-                    modifier = Modifier
-                        .padding(
-                            start = 8.dp,
-                            end = 8.dp,
-                            top = 8.dp,
-                            bottom = 4.dp
-                        )
-                )
-                Text(
-                    text = story.url.shortUrlString,
-                    modifier = Modifier
-                        .padding(
-                            top = 0.dp,
-                            bottom = 8.dp,
-                            start = 8.dp,
-                            end = 8.dp
-                        ),
-                    style = TextStyle(
-                        fontSize = 10.sp,
-                        color = Color.Gray
+            Row {
+                story.favicon?.asImageAsset()?.also { imageAsset ->
+                    Image(
+                        asset = imageAsset,
+                        modifier = Modifier
+                            .height(30.dp)
+                            .width(30.dp)
+                            .padding(start = 4.dp, end = 4.dp)
+                            .gravity(Alignment.CenterVertically)
                     )
-                )
+                } ?: run {
+                    Image(
+                        asset = vectorResource(id = R.drawable.ic_launcher_foreground),
+                        modifier = Modifier
+                            .height(30.dp)
+                            .width(30.dp)
+                            .padding(start = 4.dp, end = 4.dp)
+                            .gravity(Alignment.CenterVertically)
+                    )
+                }
+                Column {
+                    Text(
+                        text = story.title ?: "",
+                        modifier = Modifier
+                            .padding(
+                                start = 8.dp,
+                                end = 8.dp,
+                                top = 8.dp,
+                                bottom = 4.dp
+                            )
+                    )
+                    if (story.url.shortUrlString.isNotEmpty()) {
+                        Text(
+                            text = story.url.shortUrlString,
+                            modifier = Modifier
+                                .padding(
+                                    top = 0.dp,
+                                    bottom = 8.dp,
+                                    start = 8.dp,
+                                    end = 8.dp
+                                ),
+                            style = TextStyle(
+                                fontSize = 10.sp,
+                                color = Color.Gray
+                            )
+                        )
+                    }
+                }
             }
         }
     }
