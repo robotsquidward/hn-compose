@@ -44,17 +44,17 @@ object AppDataStatus: AppDataStatusHolder {
 @Model
 object MockAppDataStatus: AppDataStatusHolder {
     override var topStories: ModelList<HNItem> = modelListOf(
-        HNItem(id = 0, title = "Title 1", url = "google.com"),
-        HNItem(id = 1, title = "Title 2", url = "google.com"),
-        HNItem(id = 2, title = "Title 3", url = "google.com"))
+        HNItem(id = 0, title = "Title 1", url = "https://www.google.com"),
+        HNItem(id = 1, title = "Title 2", url = "https://www.google.com"),
+        HNItem(id = 2, title = "Title 3", url = "https://www.google.com"))
     override var newStories: ModelList<HNItem> = modelListOf(
-        HNItem(id = 0, title = "Title 1", url = "google.com"),
-        HNItem(id = 1, title = "Title 2", url = "google.com"),
-        HNItem(id = 2, title = "Title 3", url = "google.com"))
+        HNItem(id = 0, title = "Title 1", url = "https://www.google.com"),
+        HNItem(id = 1, title = "Title 2", url = "https://www.google.com"),
+        HNItem(id = 2, title = "Title 3", url = "https://www.google.com"))
     override var jobStories: ModelList<HNItem> = modelListOf(
-        HNItem(id = 0, title = "Title 1", url = "google.com"),
-        HNItem(id = 1, title = "Title 2", url = "google.com"),
-        HNItem(id = 2, title = "Title 3", url = "google.com"))
+        HNItem(id = 0, title = "Title 1", url = "https://www.google.com"),
+        HNItem(id = 1, title = "Title 2", url = "https://www.google.com"),
+        HNItem(id = 2, title = "Title 3", url = "https://www.google.com"))
 
     override var topStoryIdChunks: List<List<Int>> = emptyList()
     override var newStoryIdChunks: List<List<Int>> = emptyList()
