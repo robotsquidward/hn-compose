@@ -3,11 +3,13 @@ package com.example.hncompose
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
+import androidx.compose.Model
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.*
 import androidx.ui.material.Card
 import androidx.ui.material.MaterialTheme
@@ -17,6 +19,65 @@ import androidx.ui.text.font.FontStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+
+@Model
+object TopStoryModel {
+    val storyList: List<Story> = listOf(
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        ),
+        Story(
+            title = "Hello World!",
+            details = "More details about the story."
+        )
+    )
+}
+
+data class Story(
+    val title: String = "",
+    val details: String = ""
+)
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,13 +91,28 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun LandingScreen() {
     MaterialTheme {
-        BasicCard()
+        StoryList(stories = TopStoryModel.storyList)
     }
 }
 
 @Composable
-fun BasicCard() {
-    Card(modifier = Modifier.padding(8.dp)) {
+fun StoryList(stories: List<Story>) {
+    VerticalScroller {
+        Column {
+            for (story in stories) {
+                BasicCard(story = story)
+            }
+        }
+    }
+}
+
+@Composable
+fun BasicCard(story: Story) {
+    Card(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+    ) {
         Row(modifier = Modifier.padding(8.dp)) {
             Image(
                 asset = vectorResource(id = R.drawable.ic_launcher_foreground),
@@ -48,13 +124,13 @@ fun BasicCard() {
             )
             Column {
                 Text(
-                    text = "Hello World!",
+                    text = story.title,
                     style = TextStyle(
                         fontSize = 14.sp
                     )
                 )
                 Text(
-                    text = "More details",
+                    text = story.details,
                     style = TextStyle(
                         fontSize = 12.sp,
                         fontStyle = FontStyle.Italic
