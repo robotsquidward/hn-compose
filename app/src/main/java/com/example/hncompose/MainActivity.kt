@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.Model
+import androidx.compose.remember
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
@@ -11,8 +12,7 @@ import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.*
-import androidx.ui.material.Card
-import androidx.ui.material.MaterialTheme
+import androidx.ui.material.*
 import androidx.ui.res.vectorResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontStyle
@@ -91,7 +91,19 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun LandingScreen() {
     MaterialTheme {
-        StoryList(stories = TopStoryModel.storyList)
+        Scaffold(
+            scaffoldState = remember { ScaffoldState() },
+            topAppBar = {
+                TopAppBar(
+                    title = {
+                        Text(text = "HN Compose")
+                    }
+                )
+            },
+            bodyContent = {
+                StoryList(stories = TopStoryModel.storyList)
+            }
+        )
     }
 }
 
