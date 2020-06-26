@@ -8,5 +8,6 @@ import com.example.hncompose.Story
  * @param story the [Story] to toggle the 'favorite' Boolean on.
  */
 fun List<Story>.toggleFavorite(story: Story) {
-    this[this.indexOf(story)].favorite = !story.favorite
+    val index = this.indexOf(story)
+    this[index].favorite = !this[index].favorite
 }

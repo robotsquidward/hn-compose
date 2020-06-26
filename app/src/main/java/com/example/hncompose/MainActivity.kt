@@ -3,9 +3,7 @@ package com.example.hncompose
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
-import androidx.compose.Model
 import androidx.compose.frames.ModelList
-import androidx.compose.frames.modelListOf
 import androidx.compose.remember
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
@@ -25,67 +23,6 @@ import androidx.ui.text.font.FontStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
-import com.example.hncompose.snippets.toggleFavorite
-
-@Model
-object TopStoryModel {
-    val storyList: ModelList<Story> = modelListOf(
-        Story(
-            title = "Hello World! 1",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 2",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 3",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 4",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 5",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 6",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 7",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 8",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 9",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 10",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 11",
-            details = "More details about the story."
-        ),
-        Story(
-            title = "Hello World! 12",
-            details = "More details about the story."
-        )
-    )
-}
-
-data class Story(
-    val title: String = "",
-    val details: String = "",
-    var favorite: Boolean = false
-)
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,7 +49,8 @@ fun LandingScreen() {
                 StoryList(
                     stories = TopStoryModel.storyList
                 ) { story ->
-                    TopStoryModel.storyList.toggleFavorite(story)
+                    story.favorite = !story.favorite
+                    TopStoryModel.storyList[TopStoryModel.storyList.indexOf(story)] = story
                 }
             }
         )
@@ -142,10 +80,14 @@ fun BasicCard(story: Story, storyClicked: (Story) -> Unit) {
             .fillMaxWidth()
     ) {
 
-        Row(modifier = Modifier.padding(8.dp)) {
-            Clickable(onClick = {
-                story.favorite = !story.favorite
-            }) {
+        Clickable(
+            onClick = {
+                storyClicked.invoke(story)
+            },
+            modifier = Modifier.ripple()
+        ) {
+            Row(modifier = Modifier.padding(8.dp)) {
+
                 Image(
                     asset = if (story.favorite) {
                         vectorResource(id = R.drawable.ic_baseline_star_24)
@@ -159,13 +101,7 @@ fun BasicCard(story: Story, storyClicked: (Story) -> Unit) {
                         .padding(end = 8.dp)
                         .gravity(Alignment.CenterVertically)
                 )
-            }
-            Clickable(
-                onClick = {
-                    storyClicked.invoke(story)
-                },
-                modifier = Modifier.ripple()
-            ) {
+
                 Column(
                     modifier = Modifier.fillMaxWidth()
                 ) {
@@ -185,7 +121,6 @@ fun BasicCard(story: Story, storyClicked: (Story) -> Unit) {
                 }
             }
         }
-
     }
 
 }
