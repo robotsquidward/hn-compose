@@ -17,6 +17,7 @@ import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
+import androidx.ui.res.imageResource
 import androidx.ui.res.vectorResource
 import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontStyle
@@ -49,8 +50,7 @@ fun LandingScreen() {
                 StoryList(
                     stories = TopStoryModel.storyList
                 ) { story ->
-                    story.favorite = !story.favorite
-                    TopStoryModel.storyList[TopStoryModel.storyList.indexOf(story)] = story
+                    TopStoryModel.storyList[TopStoryModel.storyList.indexOf(story)].favorite = !story.favorite
                 }
             }
         )
@@ -88,19 +88,28 @@ fun BasicCard(story: Story, storyClicked: (Story) -> Unit) {
         ) {
             Row(modifier = Modifier.padding(8.dp)) {
 
-                Image(
-                    asset = if (story.favorite) {
-                        vectorResource(id = R.drawable.ic_baseline_star_24)
-                    } else {
-                        vectorResource(id = R.drawable.ic_baseline_star_border_24)
-                    },
-                    colorFilter = ColorFilter.tint(Color(R.color.purple200)),
-                    modifier = Modifier
-                        .height(24.dp)
-                        .width(24.dp)
-                        .padding(end = 8.dp)
-                        .gravity(Alignment.CenterVertically)
-                )
+                if (story.favorite) {
+                    Image(
+                        asset = vectorResource(id = R.drawable.ic_baseline_star_24),
+                        colorFilter = ColorFilter.tint(Color(R.color.purple200)),
+                        modifier = Modifier
+                            .height(24.dp)
+                            .width(24.dp)
+                            .padding(end = 8.dp)
+                            .gravity(Alignment.CenterVertically)
+                    )
+                } else {
+                    Image(
+                        asset = vectorResource(id = R.drawable.ic_baseline_star_border_24),
+                        colorFilter = ColorFilter.tint(Color(R.color.purple200)),
+                        modifier = Modifier
+                            .height(24.dp)
+                            .width(24.dp)
+                            .padding(end = 8.dp)
+                            .gravity(Alignment.CenterVertically)
+                    )
+                }
+
 
                 Column(
                     modifier = Modifier.fillMaxWidth()
