@@ -37,7 +37,7 @@ fun AppContent() {
     Crossfade(current = AppScreenStatus.currentScreen) { screen ->
         when (screen) {
             is Screen.Top -> LandingScreen()
-            is Screen.Favorites -> LandingScreen()
+            is Screen.Favorites -> FavoritesScreen()
         }
     }
 }
