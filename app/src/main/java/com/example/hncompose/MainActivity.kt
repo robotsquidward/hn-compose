@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.frames.ModelList
 import androidx.compose.remember
+import androidx.ui.animation.Crossfade
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
@@ -29,7 +30,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LandingScreen()
+            AppContent()
+        }
+    }
+}
+
+@Composable
+fun AppContent() {
+    Crossfade(current = AppScreenStatus.currentScreen) { screen ->
+        when (screen) {
+            is Screen.Top -> LandingScreen()
+            is Screen.Favorites -> LandingScreen()
         }
     }
 }

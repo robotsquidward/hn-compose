@@ -12,8 +12,7 @@ object AppScreenStatus {
 
 sealed class Screen {
     object Top: Screen()
-    object New: Screen()
-    object Jobs: Screen()
+    object Favorites: Screen()
 }
 
 interface AppDataStatusHolder {
