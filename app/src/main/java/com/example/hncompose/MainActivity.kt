@@ -9,10 +9,7 @@ import androidx.ui.animation.Crossfade
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
-import androidx.ui.foundation.Clickable
-import androidx.ui.foundation.Image
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
+import androidx.ui.foundation.*
 import androidx.ui.graphics.Color
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
@@ -54,6 +51,13 @@ fun LandingScreen() {
                 TopAppBar(
                     title = {
                         Text(text = "HN Compose")
+                    },
+                    actions = {
+                        IconButton(onClick = {
+                            AppScreenStatus.currentScreen = Screen.Favorites
+                        }) {
+                            Icon(asset = vectorResource(id = R.drawable.ic_baseline_star_24))
+                        }
                     }
                 )
             },
