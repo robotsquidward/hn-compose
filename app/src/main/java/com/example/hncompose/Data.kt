@@ -67,12 +67,13 @@ object TopStoryModel {
         Story(
             title = "Hello World! 11",
             details = "More details about the story.",
-            favorite = false
+            favorite = true
         ),
         Story(
             title = "Hello World! 12",
             details = "More details about the story.",
-            favorite = false
+            favorite = true
         )
     )
+    var favorites: List<Story> = storyList.filter { it.favorite }
 }
