@@ -17,22 +17,25 @@ import androidx.ui.unit.dp
 import com.example.hackernetwork.HNItem
 import com.example.hncompose.R
 import com.example.hncompose.data.AppDataStatus
+import com.example.hncompose.extension.mock
 import com.example.hncompose.function.storyClicked
 import com.example.hncompose.extension.toggleFavorite
+import com.example.hncompose.theme.JetnewsTheme
 import com.example.util.shortUrlString
 
 
 @Composable
 fun LandingScreen(
+    appData: AppDataStatus,
     loadMoreTopStories: () -> Unit
 ) {
     val context = ContextAmbient.current
 
     StoryList(
-        stories = AppDataStatus.topStories,
-        storiesLoading = AppDataStatus.loading,
+        stories = appData.topStories,
+        storiesLoading = appData.loading,
         storyFavorited = { story ->
-            AppDataStatus.topStories = AppDataStatus.topStories.toggleFavorite(story = story)
+            appData.topStories = appData.topStories.toggleFavorite(story = story)
         },
         storyOpened = { story ->
             storyClicked(
@@ -181,5 +184,7 @@ fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
 @Preview
 @Composable
 fun LandingScreenPreview() {
-    LandingScreen(loadMoreTopStories = {})
+    JetnewsTheme {
+        LandingScreen(appData = AppDataStatus.mock(), loadMoreTopStories = {})
+    }
 }

@@ -10,14 +10,15 @@ import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import com.example.hackernetwork.HNItem
 import com.example.hncompose.data.AppDataStatus
+import com.example.hncompose.extension.mock
 import com.example.hncompose.function.storyClicked
 import com.example.hncompose.theme.JetnewsTheme
 import com.example.util.shortUrlString
 
 @Composable
-fun FavoritesScreen() {
+fun FavoritesScreen(appData: AppDataStatus) {
     FavoritesList(
-        stories = AppDataStatus.topStories.filter { it.favorite }
+        stories = appData.topStories.filter { it.favorite }
     )
 }
 
@@ -74,6 +75,6 @@ fun FavoritesCard(story: HNItem, storyClicked: () -> Unit) {
 @Composable
 fun FavoritesPreview() {
     JetnewsTheme {
-        FavoritesScreen()
+        FavoritesScreen(AppDataStatus.mock())
     }
 }
