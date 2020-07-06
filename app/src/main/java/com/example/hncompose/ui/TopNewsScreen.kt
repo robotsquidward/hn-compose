@@ -83,7 +83,7 @@ fun BasicCard(
 
     Card(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(start = 0.dp, end = 8.dp, top = 8.dp, bottom = 8.dp)
             .fillMaxWidth()
     ) {
         Clickable(
@@ -137,7 +137,6 @@ fun FavoriteButton(favorite: Boolean, toggleFavorite: () -> Unit) {
                 colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
             )
         }
-
     }
 }
 

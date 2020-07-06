@@ -8,8 +8,7 @@ import com.example.hncompose.model.Screen
 
 @Model
 object AppScreenStatus {
-    var currentScreen: Screen =
-        Screen.TopNews
+    var currentScreen: Screen = Screen.TopNews
 }
 
 @Model
