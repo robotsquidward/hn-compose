@@ -28,7 +28,12 @@ interface HackerNewsAPI {
  * https://github.com/HackerNews/API
  */
 data class HNItem(
+    // Basic elements
     var id: Int?,
+    var title: String? = null,
+    var url: String? = null,
+
+    // Advanced API attributes
     var deleted: Boolean? = false,
     var type: String? = null,
     var by: String? = null,
@@ -38,9 +43,7 @@ data class HNItem(
     var parent: Int? = null,
     var poll: Int? = null,
     var kids: MutableList<Int>? = null,
-    var url: String? = null,
     var score: Int? = null,
-    var title: String? = null,
     var parts: MutableList<Int>? = null,
     var descendants: Int? = null,
 

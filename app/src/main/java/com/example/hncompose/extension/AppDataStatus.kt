@@ -10,19 +10,22 @@ import com.example.hncompose.data.AppDataStatus
 fun AppDataStatus.mock(): AppDataStatus {
     return this.apply {
         topStories = modelListOf(
-            HNItem(id = 0, title = "Title 1", url = "https://www.google.com", favorite = true),
-            HNItem(id = 1, title = "Title 2", url = "https://www.google.com"),
-            HNItem(id = 2, title = "Title 3", url = "https://www.google.com")
+            HNItem(id = 0, title = "New MacBook Released", url = "https://www.apple.com", favorite = true),
+            HNItem(id = 1, title = "New MacBook Review!", url = "https://www.theverge.com"),
+            HNItem(id = 2, title = "New MacBook by the Numbers", url = "https://www.bloomberg.com"),
+            HNItem(id = 3, title = "New MacBook Repair Guide", url = "https://www.ifixit.com")
         )
         newStories = modelListOf(
-            HNItem(id = 0, title = "Title 1", url = "https://www.google.com", favorite = true),
-            HNItem(id = 1, title = "Title 2", url = "https://www.google.com"),
-            HNItem(id = 2, title = "Title 3", url = "https://www.google.com")
+            HNItem(id = 0, title = "New MacBook Released", url = "https://www.apple.com", favorite = true),
+            HNItem(id = 1, title = "New MacBook Review!", url = "https://www.theverge.com"),
+            HNItem(id = 2, title = "New MacBook by the Numbers", url = "https://www.bloomberg.com"),
+            HNItem(id = 3, title = "New MacBook Repair Guide", url = "https://www.ifixit.com")
         )
         jobStories = modelListOf(
-            HNItem(id = 0, title = "Title 1", url = "https://www.google.com", favorite = true),
-            HNItem(id = 1, title = "Title 2", url = "https://www.google.com"),
-            HNItem(id = 2, title = "Title 3", url = "https://www.google.com")
+            HNItem(id = 0, title = "New MacBook Released", url = "https://www.apple.com", favorite = true),
+            HNItem(id = 1, title = "New MacBook Review!", url = "https://www.theverge.com"),
+            HNItem(id = 2, title = "New MacBook by the Numbers", url = "https://www.bloomberg.com"),
+            HNItem(id = 3, title = "New MacBook Repair Guide", url = "https://www.ifixit.com")
         )
 
         topStoryIdChunks = emptyList()
