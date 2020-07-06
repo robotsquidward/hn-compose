@@ -40,7 +40,7 @@ fun FavoritesScreen() {
             },
             bodyContent = {
                 FavoritesList(
-                    stories = TopStoryModel.favorites
+                    stories = TopStoryModel.storyList.filter { it.favorite }
                 )
             }
         )
