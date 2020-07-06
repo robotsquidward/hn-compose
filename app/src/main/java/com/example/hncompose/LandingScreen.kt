@@ -17,6 +17,7 @@ import androidx.ui.text.font.FontStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+import com.example.hncompose.snippets.toggleFavorite
 
 
 @Composable
@@ -42,7 +43,7 @@ fun LandingScreen() {
                 StoryList(
                     stories = TopStoryModel.storyList
                 ) { story ->
-                    TopStoryModel.storyList[TopStoryModel.storyList.indexOf(story)].favorite = !story.favorite
+                    TopStoryModel.storyList.toggleFavorite(story = story)
                 }
             }
         )

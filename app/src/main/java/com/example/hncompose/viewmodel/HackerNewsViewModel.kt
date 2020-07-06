@@ -23,6 +23,12 @@ import java.net.URI
 /**
  * Activity View Model for the [MainActivity] that manages Hacker News data from
  * the network, and other non-Composable UI logic.
+ *
+ * Use this ViewModel to fetch data from the Hacker News API. Use the [AppDataStatus] to
+ * access data loaded from this ViewModel.
+ *
+ * You shouldn't need to update this View Model for demo purposes, unless you explicitly
+ * want to change the API.
  */
 class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
