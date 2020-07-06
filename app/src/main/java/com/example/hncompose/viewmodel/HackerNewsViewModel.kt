@@ -1,31 +1,25 @@
 package com.example.hncompose.viewmodel
 
-import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.util.Log
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackernetwork.HNItem
 import com.example.hackernetwork.HackerNewsRepo
-import com.example.hncompose.AppDataStatus
-import com.example.hncompose.R
-import com.squareup.picasso.Picasso
+import com.example.hackernetwork.downloadImageFrom
+import com.example.hncompose.data.AppDataStatus
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.io.IOException
-import java.net.URI
 
 
 /**
  * Activity View Model for the [MainActivity] that manages Hacker News data from
  * the network, and other non-Composable UI logic.
+ *
+ * Use this ViewModel to fetch data from the Hacker News API. Use the [AppDataStatus] to
+ * access data loaded from this ViewModel.
+ *
+ * You shouldn't need to update this View Model for demo purposes, unless you explicitly
+ * want to change the API.
  */
 class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
@@ -111,23 +105,9 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
     val listenerHandler: HackerNewsListenerHandler = HackerNewsListenerHandler()
 
-    /**
-     * Callback to notify the VM to launch a Custom Tabs Intent to selected URL.
-     */
-    fun storyClicked(url: String?, context: Context) {
-        url?.also {
-            CustomTabsIntent.Builder()
-                .setToolbarColor(context.getColor(R.color.purple500))
-                .build()
-                .apply {
-                    launchUrl(context, Uri.parse(url))
-                }
-        }
-    }
-
     // region Private Functions
 
-    private fun getTopStoryChunkDetails(chunkIndex: Int = 0) {
+    private fun getTopStoryChunkDetails(chunkIndex: Int = 0, loadImages: Boolean = false) {
         if (chunkIndex in AppDataStatus.topStoryIdChunks.indices) {
             AppDataStatus.loading = true
             viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
@@ -136,7 +116,7 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
                 AppDataStatus.topStories.addAll(
                     AppDataStatus.topStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                         val item = repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
-                        item.favicon = downloadImageFrom(item.url)
+                        if (loadImages) { item.favicon = downloadImageFrom(item.url) }
                         return@mapIndexed item
                     }
                 )
@@ -175,24 +155,6 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
     private fun nextChunkIndex(listSize: Int, chunkSize: Int = pageSize): Int {
         return listSize / chunkSize
-    }
-
-    /**
-     * Util function to download a favicon given a url.
-     */
-    private suspend fun downloadImageFrom(imageUrl: String?): Bitmap? {
-        return withContext(Dispatchers.IO) {
-            val uri = URI(imageUrl ?: "https://news.ycombinator.com")
-            val domain = uri.host
-            val domainUrl = if (domain.startsWith("www.")) domain.substring(4) else domain
-            val iconUrl = "https://icons.duckduckgo.com/ip2/${domainUrl}.ico"
-            try {
-                return@withContext Picasso.get().load(iconUrl).get()
-            } catch (exception: IOException) {
-                Log.d("PICASSO_EX", exception.localizedMessage ?: "Picasso get() failed.")
-                return@withContext null
-            }
-        }
     }
 
     // endregion Private Functions

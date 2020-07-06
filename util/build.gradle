@@ -1,7 +1,6 @@
 plugins {
     id "com.android.library"
     id "kotlin-android"
-    id "kotlin-android-extensions"
 }
 
 android {
@@ -38,13 +37,13 @@ dependencies {
     implementation "androidx.core:core-ktx:1.3.0"
     implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "com.google.android.material:material:1.1.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    implementation "com.squareup.picasso:picasso:2.71828"
+    implementation "androidx.browser:browser:1.2.0"
 
-    // Retrofit Dependencies
-    api "com.squareup.retrofit2:retrofit:2.9.0"// provide basic Retrofit dependencies to consumer
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+    // Compose Dependencies
+    implementation "androidx.ui:ui-framework:$compose_version"
+    implementation "androidx.ui:ui-layout:$compose_version"
+    implementation "androidx.ui:ui-material:$compose_version"
+    implementation "androidx.ui:ui-tooling:$compose_version"
 
     testImplementation "junit:junit:4.13"
 
