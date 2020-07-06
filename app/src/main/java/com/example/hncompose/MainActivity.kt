@@ -40,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         }
         hackerNewsViewModel.getTopStories()
     }
+
+    override fun onBackPressed() {
+        if (AppScreenStatus.currentScreen == Screen.Favorites) {
+            AppScreenStatus.currentScreen = Screen.Top
+        }
+    }
 }
 
 @Composable
