@@ -38,7 +38,10 @@ class MainActivity : AppCompatActivity() {
 fun AppContent(listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler) {
     Crossfade(current = AppScreenStatus.currentScreen) { screen ->
         when (screen) {
-            is Screen.Top -> LandingScreen(listenerHandler.handleLoadMoreTopStories)
+            is Screen.Top -> LandingScreen(
+                appData = AppDataStatus,
+                loadMoreTopStories = listenerHandler.handleLoadMoreTopStories
+            )
             is Screen.Favorites -> FavoritesScreen()
         }
     }

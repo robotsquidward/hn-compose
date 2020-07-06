@@ -22,7 +22,11 @@ import com.example.hncompose.viewmodel.HackerNewsViewModel
 
 
 @Composable
-fun LandingScreen(loadMoreTopStories: () -> Unit) {
+fun LandingScreen(
+    appData: AppDataStatusHolder,
+    loadMoreTopStories: () -> Unit
+) {
+
     val context = ContextAmbient.current
 
     JetnewsTheme {
@@ -37,7 +41,8 @@ fun LandingScreen(loadMoreTopStories: () -> Unit) {
             },
             bodyContent = {
                 StoryList(
-                    stories = AppDataStatus.topStories,
+                    stories = appData.topStories,
+                    storiesLoading = appData.loading,
                     storyClicked = { story -> storyClicked(url = story.url, context = context) },
                     loadMoreCardClicked = loadMoreTopStories
                 )
@@ -49,6 +54,7 @@ fun LandingScreen(loadMoreTopStories: () -> Unit) {
 @Composable
 fun StoryList(
     stories: ModelList<HNItem>,
+    storiesLoading: Boolean,
     storyClicked: (HNItem) -> Unit,
     loadMoreCardClicked: () -> Unit
 ) {
@@ -60,13 +66,20 @@ fun StoryList(
                     storyClicked = storyClicked
                 )
             }
-            LoadingCard(loadMoreCardClicked = loadMoreCardClicked)
+            LoadingCard(
+                stories = stories,
+                loading = storiesLoading,
+                loadMoreCardClicked = loadMoreCardClicked
+            )
         }
     }
 }
 
 @Composable
-fun BasicCard(story: HNItem, storyClicked: (HNItem) -> Unit) {
+fun BasicCard(
+    story: HNItem,
+    storyClicked: (HNItem) -> Unit
+) {
 
     Card(
         modifier = Modifier
@@ -121,9 +134,13 @@ fun BasicCard(story: HNItem, storyClicked: (HNItem) -> Unit) {
 }
 
 @Composable
-fun LoadingCard(loadMoreCardClicked: () -> Unit) {
+fun LoadingCard(
+    stories: ModelList<HNItem>,
+    loading: Boolean,
+    loadMoreCardClicked: () -> Unit
+) {
     Column(modifier = Modifier.fillMaxWidth()) {
-        if (AppDataStatus.loading) {
+        if (loading) {
             CircularProgressIndicator(
                 modifier = Modifier
                     .height(50.dp)
@@ -132,7 +149,7 @@ fun LoadingCard(loadMoreCardClicked: () -> Unit) {
                     .fillMaxWidth()
                     .gravity(Alignment.CenterHorizontally)
             )
-        } else if (AppDataStatus.topStories.isNotEmpty()) {
+        } else if (stories.isNotEmpty()) {
             LoadMoreCard(loadMoreCardClicked = loadMoreCardClicked)
         }
     }
@@ -159,5 +176,5 @@ fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
 @Preview
 @Composable
 fun LandingScreenPreview() {
-    LandingScreen(loadMoreTopStories = {})
+    LandingScreen(appData = MockAppDataStatus, loadMoreTopStories = {})
 }
