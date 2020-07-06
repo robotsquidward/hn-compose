@@ -22,5 +22,5 @@ object AppDataStatus {
     var newStoryIdChunks: List<List<Int>> = emptyList()
     var jobStoryIdChunks: List<List<Int>> = emptyList()
 
-    var loading: Boolean = false
+    var loading: Boolean = true
 }

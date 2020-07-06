@@ -18,8 +18,8 @@ package com.example.hncompose.theme
 
 import androidx.ui.graphics.Color
 
-val Red200 = Color(0xfff297a2)
-val Red300 = Color(0xffea6d7e)
-val Red700 = Color(0xffdd0d3c)
-val Red800 = Color(0xffd00036)
-val Red900 = Color(0xffc20029)
+val Orange200 = Color(0xffff8533)
+val Orange300 = Color(0xffff751a)
+val Orange700 = Color(0xffff6600)
+val Orange800 = Color(0xffe65c00)
+val Orange900 = Color(0xffcc5200)

@@ -25,27 +25,27 @@ import androidx.ui.material.darkColorPalette
 import androidx.ui.material.lightColorPalette
 
 private val LightThemeColors = lightColorPalette(
-    primary = Red700,
-    primaryVariant = Red900,
+    primary = Orange700,
+    primaryVariant = Orange900,
     onPrimary = Color.White,
-    secondary = Red700,
-    secondaryVariant = Red900,
+    secondary = Orange700,
+    secondaryVariant = Orange900,
     onSecondary = Color.White,
-    error = Red800
+    error = Orange800
 )
 
 private val DarkThemeColors = darkColorPalette(
-    primary = Red300,
-    primaryVariant = Red700,
+    primary = Orange300,
+    primaryVariant = Orange700,
     onPrimary = Color.Black,
-    secondary = Red300,
+    secondary = Orange300,
     onSecondary = Color.White,
-    error = Red200
+    error = Orange200
 )
 
 @Composable
 val ColorPalette.snackbarAction: Color
-    get() = if (isLight) Red300 else Red700
+    get() = if (isLight) Orange300 else Orange700
 
 @Composable
 fun JetnewsTheme(
