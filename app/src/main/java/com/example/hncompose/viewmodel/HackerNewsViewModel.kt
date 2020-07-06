@@ -116,7 +116,7 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
     // region Private Functions
 
-    private fun getTopStoryChunkDetails(chunkIndex: Int = 0) {
+    private fun getTopStoryChunkDetails(chunkIndex: Int = 0, loadImages: Boolean = false) {
         if (chunkIndex in AppDataStatus.topStoryIdChunks.indices) {
             AppDataStatus.loading = true
             viewModelScope.launch(CoroutineExceptionHandler { _, throwable ->
@@ -125,7 +125,7 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
                 AppDataStatus.topStories.addAll(
                     AppDataStatus.topStoryIdChunks[chunkIndex].mapIndexed { index, storyId ->
                         val item = repo.getItem(storyId.toString()).body() ?: HNItem(id = index)
-                        item.favicon = downloadImageFrom(item.url)
+                        if (loadImages) { item.favicon = downloadImageFrom(item.url) }
                         return@mapIndexed item
                     }
                 )

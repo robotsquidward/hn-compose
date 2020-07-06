@@ -2,60 +2,48 @@ package com.example.hncompose
 
 import androidx.compose.Composable
 import androidx.compose.frames.ModelList
-import androidx.compose.remember
 import androidx.ui.core.Alignment
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
-import androidx.ui.graphics.asImageAsset
+import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
+import androidx.ui.layout.RowScope.gravity
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import com.example.hackernetwork.HNItem
-import com.example.hncompose.snippets.shortUrlString
 import com.example.hncompose.snippets.storyClicked
-import com.example.hncompose.theme.JetnewsTheme
-import com.example.hncompose.viewmodel.HackerNewsViewModel
+import com.example.hncompose.snippets.toggleFavorite
+import com.example.util.shortUrlString
 
 
 @Composable
 fun LandingScreen(
-    appData: AppDataStatusHolder,
     loadMoreTopStories: () -> Unit
 ) {
-
     val context = ContextAmbient.current
 
-    JetnewsTheme {
-        Scaffold(
-            scaffoldState = remember { ScaffoldState() },
-            topAppBar = {
-                TopAppBar(
-                    title = {
-                        Text(text = AppScreenStatus.currentScreen.title)
-                    }
-                )
-            },
-            bodyContent = {
-                StoryList(
-                    stories = appData.topStories,
-                    storiesLoading = appData.loading,
-                    storyClicked = { story -> storyClicked(url = story.url, context = context) },
-                    loadMoreCardClicked = loadMoreTopStories
-                )
-            }
-        )
-    }
+    StoryList(
+        stories = AppDataStatus.topStories,
+        storiesLoading = AppDataStatus.loading,
+        storyFavorited = { story ->
+            AppDataStatus.topStories = AppDataStatus.topStories.toggleFavorite(story = story)
+        },
+        storyOpened = { story -> storyClicked(url = story.url, context = context) },
+        loadMoreCardClicked = loadMoreTopStories
+    )
+
 }
 
 @Composable
 fun StoryList(
     stories: ModelList<HNItem>,
     storiesLoading: Boolean,
-    storyClicked: (HNItem) -> Unit,
+    storyOpened: (HNItem) -> Unit,
+    storyFavorited: (HNItem) -> Unit,
     loadMoreCardClicked: () -> Unit
 ) {
     VerticalScroller {
@@ -63,7 +51,8 @@ fun StoryList(
             for (story in stories) {
                 BasicCard(
                     story = story,
-                    storyClicked = storyClicked
+                    storyOpened = storyOpened,
+                    storyFavorited = storyFavorited
                 )
             }
             LoadingCard(
@@ -78,7 +67,8 @@ fun StoryList(
 @Composable
 fun BasicCard(
     story: HNItem,
-    storyClicked: (HNItem) -> Unit
+    storyFavorited: (HNItem) -> Unit,
+    storyOpened: (HNItem) -> Unit
 ) {
 
     Card(
@@ -86,35 +76,17 @@ fun BasicCard(
             .padding(8.dp)
             .fillMaxWidth()
     ) {
-
         Clickable(
             onClick = {
-                storyClicked.invoke(story)
+                storyOpened.invoke(story)
             },
             modifier = Modifier.ripple()
         ) {
             Row(modifier = Modifier.padding(8.dp)) {
 
-                story.favicon?.asImageAsset()?.also { imageAsset ->
-                    Image(
-                        asset = imageAsset,
-                        modifier = Modifier
-                            .height(30.dp)
-                            .width(30.dp)
-                            .padding(start = 4.dp, end = 4.dp)
-                            .gravity(Alignment.CenterVertically)
-                    )
-                } ?: run {
-                    Image(
-                        asset = vectorResource(id = R.drawable.ic_launcher_foreground),
-                        modifier = Modifier
-                            .height(30.dp)
-                            .width(30.dp)
-                            .padding(start = 4.dp, end = 12.dp)
-                            .gravity(Alignment.CenterVertically)
-                    )
+                FavoriteButton(favorite = story.favorite) {
+                    storyFavorited.invoke(story)
                 }
-
 
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -128,8 +100,34 @@ fun BasicCard(
                         style = MaterialTheme.typography.body2
                     )
                 }
+
             }
         }
+
+    }
+}
+
+@Composable
+fun FavoriteButton(favorite: Boolean, toggleFavorite: () -> Unit) {
+    TextButton(
+        onClick = toggleFavorite,
+        modifier = Modifier
+            .padding(end = 2.dp)
+            .gravity(Alignment.CenterVertically),
+        padding = InnerPadding(0.dp)
+    ) {
+        if (favorite) {
+            Image(
+                asset = vectorResource(id = R.drawable.ic_baseline_star_24),
+                colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
+            )
+        } else {
+            Image(
+                asset = vectorResource(id = R.drawable.ic_baseline_star_border_24),
+                colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
+            )
+        }
+
     }
 }
 
@@ -176,5 +174,5 @@ fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
 @Preview
 @Composable
 fun LandingScreenPreview() {
-    LandingScreen(appData = MockAppDataStatus, loadMoreTopStories = {})
+    LandingScreen(loadMoreTopStories = {})
 }

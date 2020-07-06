@@ -45,5 +45,6 @@ data class HNItem(
     var descendants: Int? = null,
 
     // App specific attribute, not from the HN API
-    var favicon: Bitmap? = null
+    var favicon: Bitmap? = null,
+    var favorite: Boolean = false
 )

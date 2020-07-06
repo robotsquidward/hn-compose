@@ -4,6 +4,7 @@ import androidx.compose.Composable
 import androidx.compose.frames.ModelList
 import androidx.compose.remember
 import androidx.ui.core.Alignment
+import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
 import androidx.ui.graphics.Color
@@ -18,68 +19,57 @@ import androidx.ui.text.font.FontStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+import com.example.hackernetwork.HNItem
+import com.example.hncompose.snippets.storyClicked
 import com.example.hncompose.theme.JetnewsTheme
+import com.example.util.shortUrlString
 
 @Composable
 fun FavoritesScreen() {
-    JetnewsTheme {
-        Scaffold(
-            scaffoldState = remember { ScaffoldState() },
-            topAppBar = {
-                TopAppBar(
-                    title = {
-                        Text(text = AppScreenStatus.currentScreen.title)
-                    },
-                    actions = {
-                        IconButton(onClick = {
-                            AppScreenStatus.currentScreen = Screen.Top
-                        }) {
-                            Icon(asset = vectorResource(id = R.drawable.ic_baseline_home_24))
-                        }
-                    }
-                )
-            },
-            bodyContent = {
-                FavoritesList(
-                    stories = TopStoryModel.storyList.filter { it.favorite }
-                )
-            }
-        )
-    }
+    FavoritesList(
+        stories = AppDataStatus.topStories.filter { it.favorite }
+    )
 }
 
 @Composable
-fun FavoritesList(stories: List<Story>) {
+fun FavoritesList(stories: List<HNItem>) {
+    val context = ContextAmbient.current
+
     VerticalScroller {
         Column {
             for (story in stories) {
-                FavoritesCard(story = story)
+                FavoritesCard(
+                    story = story,
+                    storyClicked = { storyClicked(url = story.url, context = context) }
+                )
             }
         }
     }
 }
 
 @Composable
-fun FavoritesCard(story: Story) {
+fun FavoritesCard(story: HNItem, storyClicked: () -> Unit) {
 
-    Card(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()
-    ) {
-        Column(
+    Clickable(onClick = storyClicked) {
+        Card(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(8.dp)
+                .fillMaxWidth()
         ) {
-            Text(
-                text = story.title,
-                style = MaterialTheme.typography.body1
-            )
-            Text(
-                text = story.details,
-                style = MaterialTheme.typography.body2
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Text(
+                    text = story.title ?: "",
+                    style = MaterialTheme.typography.body1
+                )
+                Text(
+                    text = story.url.shortUrlString,
+                    style = MaterialTheme.typography.body2
+                )
+            }
         }
     }
 
@@ -88,5 +78,7 @@ fun FavoritesCard(story: Story) {
 @Preview
 @Composable
 fun FavoritesPreview() {
-    FavoritesScreen()
+    JetnewsTheme {
+        FavoritesScreen()
+    }
 }

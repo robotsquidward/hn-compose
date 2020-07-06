@@ -1,13 +1,16 @@
 package com.example.hncompose.snippets
 
-import com.example.hncompose.Story
+import androidx.compose.frames.ModelList
+import com.example.hackernetwork.HNItem
 
 /**
  * Extension function to make toggling favorites easier.
  *
- * @param story the [Story] to toggle the 'favorite' Boolean on.
+ * @param story the [StoryItem] to toggle the 'favorite' Boolean on.
  */
-fun List<Story>.toggleFavorite(story: Story) {
-    val index = this.indexOf(story)
-    this[index].favorite = !this[index].favorite
+fun ModelList<HNItem>.toggleFavorite(story: HNItem): ModelList<HNItem> {
+    val updatedList = this
+    val index = updatedList.indexOf(story)
+    updatedList[index].favorite = !updatedList[index].favorite
+    return updatedList
 }
