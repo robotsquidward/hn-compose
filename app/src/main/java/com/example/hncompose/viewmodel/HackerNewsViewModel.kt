@@ -1,16 +1,12 @@
 package com.example.hncompose.viewmodel
 
-import android.content.Context
 import android.graphics.Bitmap
-import android.net.Uri
 import android.util.Log
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hackernetwork.HNItem
 import com.example.hackernetwork.HackerNewsRepo
-import com.example.hncompose.AppDataStatus
-import com.example.hncompose.R
+import com.example.hncompose.data.AppDataStatus
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers

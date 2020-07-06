@@ -1,4 +1,4 @@
-package com.example.hncompose.snippets
+package com.example.hncompose.function
 
 import android.content.Context
 import android.net.Uri

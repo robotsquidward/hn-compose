@@ -1,4 +1,4 @@
-package com.example.hncompose
+package com.example.hncompose.data
 
 import androidx.compose.Model
 import androidx.compose.frames.ModelList

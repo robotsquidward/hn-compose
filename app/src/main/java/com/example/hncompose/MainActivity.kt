@@ -13,11 +13,13 @@ import androidx.ui.material.Scaffold
 import androidx.ui.material.ScaffoldState
 import androidx.ui.material.TopAppBar
 import androidx.ui.res.vectorResource
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
 import com.example.hackernetwork.HackerNewsRepo
 import com.example.hackernetwork.HackerNewsRetrofit
+import com.example.hncompose.data.AppScreenStatus
+import com.example.hncompose.data.Screen
 import com.example.hncompose.theme.JetnewsTheme
+import com.example.hncompose.ui.FavoritesScreen
+import com.example.hncompose.ui.LandingScreen
 import com.example.hncompose.viewmodel.HackerNewsViewModel
 import com.example.util.createWithFactory
 
@@ -79,7 +81,9 @@ fun AppContent(listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler) {
             bodyContent = {
                 Crossfade(current = AppScreenStatus.currentScreen) { screen ->
                     when (screen) {
-                        is Screen.Top -> LandingScreen(listenerHandler.handleLoadMoreTopStories)
+                        is Screen.Top -> LandingScreen(
+                            listenerHandler.handleLoadMoreTopStories
+                        )
                         is Screen.Favorites -> FavoritesScreen()
                     }
                 }

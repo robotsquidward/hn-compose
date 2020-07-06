@@ -1,4 +1,4 @@
-package com.example.hncompose
+package com.example.hncompose.ui
 
 import androidx.compose.Composable
 import androidx.compose.frames.ModelList
@@ -15,8 +15,10 @@ import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import com.example.hackernetwork.HNItem
-import com.example.hncompose.snippets.storyClicked
-import com.example.hncompose.snippets.toggleFavorite
+import com.example.hncompose.R
+import com.example.hncompose.data.AppDataStatus
+import com.example.hncompose.function.storyClicked
+import com.example.hncompose.extension.toggleFavorite
 import com.example.util.shortUrlString
 
 
@@ -32,7 +34,12 @@ fun LandingScreen(
         storyFavorited = { story ->
             AppDataStatus.topStories = AppDataStatus.topStories.toggleFavorite(story = story)
         },
-        storyOpened = { story -> storyClicked(url = story.url, context = context) },
+        storyOpened = { story ->
+            storyClicked(
+                url = story.url,
+                context = context
+            )
+        },
         loadMoreCardClicked = loadMoreTopStories
     )
 

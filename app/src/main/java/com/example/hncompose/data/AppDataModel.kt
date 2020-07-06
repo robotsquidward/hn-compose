@@ -1,4 +1,4 @@
-package com.example.hncompose
+package com.example.hncompose.data
 
 import androidx.compose.Model
 import androidx.compose.frames.ModelList
@@ -7,7 +7,8 @@ import com.example.hackernetwork.HNItem
 
 @Model
 object AppScreenStatus {
-    var currentScreen: Screen = Screen.Top
+    var currentScreen: Screen =
+        Screen.Top
 }
 
 sealed class Screen(

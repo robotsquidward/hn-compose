@@ -1,4 +1,4 @@
-package com.example.hncompose.snippets
+package com.example.hncompose.extension
 
 import androidx.compose.frames.ModelList
 import com.example.hackernetwork.HNItem
