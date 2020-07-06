@@ -25,7 +25,7 @@ import com.example.util.shortUrlString
 
 
 @Composable
-fun LandingScreen(
+fun TopNewsScreen(
     appData: AppDataStatus,
     loadMoreTopStories: () -> Unit
 ) {
@@ -171,12 +171,7 @@ fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
         },
         onClick = loadMoreCardClicked,
         modifier = Modifier
-            .padding(
-                start = 8.dp,
-                end = 8.dp,
-                top = 4.dp,
-                bottom = 8.dp
-            )
+            .padding(8.dp)
             .fillMaxWidth()
     )
 }
@@ -185,6 +180,6 @@ fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
 @Composable
 fun LandingScreenPreview() {
     JetnewsTheme {
-        LandingScreen(appData = AppDataStatus.mock(), loadMoreTopStories = {})
+        TopNewsScreen(appData = AppDataStatus.mock(), loadMoreTopStories = {})
     }
 }

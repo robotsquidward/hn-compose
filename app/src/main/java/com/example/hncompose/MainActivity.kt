@@ -20,7 +20,7 @@ import com.example.hncompose.data.AppScreenStatus
 import com.example.hncompose.model.Screen
 import com.example.hncompose.theme.JetnewsTheme
 import com.example.hncompose.ui.FavoritesScreen
-import com.example.hncompose.ui.LandingScreen
+import com.example.hncompose.ui.TopNewsScreen
 import com.example.hncompose.viewmodel.HackerNewsViewModel
 import com.example.util.createWithFactory
 
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (AppScreenStatus.currentScreen == Screen.Favorites) {
-            AppScreenStatus.currentScreen = Screen.Top
+            AppScreenStatus.currentScreen = Screen.TopNews
         }
     }
 }
@@ -61,7 +61,7 @@ fun AppContent(listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler) {
                     title = { Text(text = AppScreenStatus.currentScreen.title) },
                     actions = {
                         when (AppScreenStatus.currentScreen) {
-                            Screen.Top -> {
+                            Screen.TopNews -> {
                                 IconButton(onClick = {
                                     AppScreenStatus.currentScreen = Screen.Favorites
                                 }) {
@@ -70,7 +70,7 @@ fun AppContent(listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler) {
                             }
                             Screen.Favorites -> {
                                 IconButton(onClick = {
-                                    AppScreenStatus.currentScreen = Screen.Top
+                                    AppScreenStatus.currentScreen = Screen.TopNews
                                 }) {
                                     Icon(asset = vectorResource(id = R.drawable.ic_baseline_home_24))
                                 }
@@ -82,7 +82,7 @@ fun AppContent(listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler) {
             bodyContent = {
                 Crossfade(current = AppScreenStatus.currentScreen) { screen ->
                     when (screen) {
-                        is Screen.Top -> LandingScreen(
+                        is Screen.TopNews -> TopNewsScreen(
                             AppDataStatus,
                             listenerHandler.handleLoadMoreTopStories
                         )

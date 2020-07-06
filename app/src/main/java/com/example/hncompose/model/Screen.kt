@@ -8,6 +8,6 @@ package com.example.hncompose.model
 sealed class Screen(
     val title: String
 ) {
-    object Top: Screen(title = "Top News")
+    object TopNews: Screen(title = "Top News")
     object Favorites: Screen(title = "Favorites")
 }
