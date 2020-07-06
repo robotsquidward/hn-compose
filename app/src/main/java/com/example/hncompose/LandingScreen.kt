@@ -7,10 +7,8 @@ import androidx.ui.core.Alignment
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
-import androidx.ui.graphics.ColorFilter
 import androidx.ui.graphics.asImageAsset
 import androidx.ui.layout.*
-import androidx.ui.layout.ColumnScope.gravity
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
@@ -19,12 +17,12 @@ import androidx.ui.unit.dp
 import com.example.hackernetwork.HNItem
 import com.example.hncompose.snippets.shortUrlString
 import com.example.hncompose.snippets.storyClicked
-import com.example.hncompose.snippets.toggleFavorite
 import com.example.hncompose.theme.JetnewsTheme
+import com.example.hncompose.viewmodel.HackerNewsViewModel
 
 
 @Composable
-fun LandingScreen() {
+fun LandingScreen(loadMoreTopStories: () -> Unit) {
     val context = ContextAmbient.current
 
     JetnewsTheme {
@@ -39,17 +37,21 @@ fun LandingScreen() {
             },
             bodyContent = {
                 StoryList(
-                    stories = AppDataStatus.topStories
-                ) { story ->
-                    storyClicked(url = story.url, context = context)
-                }
+                    stories = AppDataStatus.topStories,
+                    storyClicked = { story -> storyClicked(url = story.url, context = context) },
+                    loadMoreCardClicked = loadMoreTopStories
+                )
             }
         )
     }
 }
 
 @Composable
-fun StoryList(stories: ModelList<HNItem>, storyClicked: (HNItem) -> Unit) {
+fun StoryList(
+    stories: ModelList<HNItem>,
+    storyClicked: (HNItem) -> Unit,
+    loadMoreCardClicked: () -> Unit
+) {
     VerticalScroller {
         Column {
             for (story in stories) {
@@ -58,7 +60,7 @@ fun StoryList(stories: ModelList<HNItem>, storyClicked: (HNItem) -> Unit) {
                     storyClicked = storyClicked
                 )
             }
-            LoadingCard()
+            LoadingCard(loadMoreCardClicked = loadMoreCardClicked)
         }
     }
 }
@@ -119,7 +121,7 @@ fun BasicCard(story: HNItem, storyClicked: (HNItem) -> Unit) {
 }
 
 @Composable
-fun LoadingCard() {
+fun LoadingCard(loadMoreCardClicked: () -> Unit) {
     Column(modifier = Modifier.fillMaxWidth()) {
         if (AppDataStatus.loading) {
             CircularProgressIndicator(
@@ -130,27 +132,32 @@ fun LoadingCard() {
                     .fillMaxWidth()
                     .gravity(Alignment.CenterHorizontally)
             )
-        } else {
-            Image(
-                asset = vectorResource(id = R.drawable.ic_launcher_foreground),
-                modifier = Modifier
-                    .height(50.dp)
-                    .width(50.dp)
-                    .padding(
-                        top = 0.dp,
-                        bottom = 8.dp,
-                        start = 8.dp,
-                        end = 8.dp
-                    )
-                    .fillMaxWidth()
-                    .gravity(Alignment.CenterHorizontally)
-            )
+        } else if (AppDataStatus.topStories.isNotEmpty()) {
+            LoadMoreCard(loadMoreCardClicked = loadMoreCardClicked)
         }
     }
+}
+
+@Composable
+fun LoadMoreCard(loadMoreCardClicked: () -> Unit) {
+    Button(
+        text = {
+            Text(text = "Load More")
+        },
+        onClick = loadMoreCardClicked,
+        modifier = Modifier
+            .padding(
+                start = 8.dp,
+                end = 8.dp,
+                top = 4.dp,
+                bottom = 8.dp
+            )
+            .fillMaxWidth()
+    )
 }
 
 @Preview
 @Composable
 fun LandingScreenPreview() {
-    LandingScreen()
+    LandingScreen(loadMoreTopStories = {})
 }
