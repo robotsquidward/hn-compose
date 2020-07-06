@@ -18,16 +18,17 @@ import androidx.ui.text.font.FontStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+import com.example.hncompose.theme.JetnewsTheme
 
 @Composable
 fun FavoritesScreen() {
-    MaterialTheme {
+    JetnewsTheme {
         Scaffold(
             scaffoldState = remember { ScaffoldState() },
             topAppBar = {
                 TopAppBar(
                     title = {
-                        Text(text = "HN Compose")
+                        Text(text = AppScreenStatus.currentScreen.title)
                     },
                     actions = {
                         IconButton(onClick = {
@@ -73,16 +74,11 @@ fun FavoritesCard(story: Story) {
         ) {
             Text(
                 text = story.title,
-                style = TextStyle(
-                    fontSize = 14.sp
-                )
+                style = MaterialTheme.typography.body1
             )
             Text(
                 text = story.details,
-                style = TextStyle(
-                    fontSize = 12.sp,
-                    fontStyle = FontStyle.Italic
-                )
+                style = MaterialTheme.typography.body2
             )
         }
     }

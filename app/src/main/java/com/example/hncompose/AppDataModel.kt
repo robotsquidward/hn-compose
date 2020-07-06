@@ -10,9 +10,11 @@ object AppScreenStatus {
     var currentScreen: Screen = Screen.Top
 }
 
-sealed class Screen {
-    object Top: Screen()
-    object Favorites: Screen()
+sealed class Screen(
+    val title: String
+) {
+    object Top: Screen(title = "Top News")
+    object Favorites: Screen(title = "Favorites")
 }
 
 interface AppDataStatusHolder {

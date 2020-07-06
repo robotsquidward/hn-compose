@@ -6,29 +6,26 @@ import androidx.compose.remember
 import androidx.ui.core.Alignment
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
-import androidx.ui.graphics.Color
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
-import androidx.ui.text.TextStyle
-import androidx.ui.text.font.FontStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
-import androidx.ui.unit.sp
 import com.example.hncompose.snippets.toggleFavorite
+import com.example.hncompose.theme.JetnewsTheme
 
 
 @Composable
 fun LandingScreen() {
-    MaterialTheme {
+    JetnewsTheme {
         Scaffold(
             scaffoldState = remember { ScaffoldState() },
             topAppBar = {
                 TopAppBar(
                     title = {
-                        Text(text = "HN Compose")
+                        Text(text = AppScreenStatus.currentScreen.title)
                     },
                     actions = {
                         IconButton(onClick = {
@@ -84,7 +81,7 @@ fun BasicCard(story: Story, storyClicked: (Story) -> Unit) {
                 if (story.favorite) {
                     Image(
                         asset = vectorResource(id = R.drawable.ic_baseline_star_24),
-                        colorFilter = ColorFilter.tint(Color(R.color.purple200)),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colors.primary),
                         modifier = Modifier
                             .height(24.dp)
                             .width(24.dp)
@@ -94,7 +91,7 @@ fun BasicCard(story: Story, storyClicked: (Story) -> Unit) {
                 } else {
                     Image(
                         asset = vectorResource(id = R.drawable.ic_baseline_star_border_24),
-                        colorFilter = ColorFilter.tint(Color(R.color.purple200)),
+                        colorFilter = ColorFilter.tint(MaterialTheme.colors.primary),
                         modifier = Modifier
                             .height(24.dp)
                             .width(24.dp)
@@ -109,16 +106,11 @@ fun BasicCard(story: Story, storyClicked: (Story) -> Unit) {
                 ) {
                     Text(
                         text = story.title,
-                        style = TextStyle(
-                            fontSize = 14.sp
-                        )
+                        style = MaterialTheme.typography.body1
                     )
                     Text(
                         text = story.details,
-                        style = TextStyle(
-                            fontSize = 12.sp,
-                            fontStyle = FontStyle.Italic
-                        )
+                        style = MaterialTheme.typography.body2
                     )
                 }
             }
