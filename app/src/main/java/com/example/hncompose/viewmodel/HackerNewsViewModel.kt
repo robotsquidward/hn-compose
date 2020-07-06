@@ -114,20 +114,6 @@ class HackerNewsViewModel(private val repo: HackerNewsRepo): ViewModel() {
 
     val listenerHandler: HackerNewsListenerHandler = HackerNewsListenerHandler()
 
-    /**
-     * Callback to notify the VM to launch a Custom Tabs Intent to selected URL.
-     */
-    fun storyClicked(url: String?, context: Context) {
-        url?.also {
-            CustomTabsIntent.Builder()
-                .setToolbarColor(context.getColor(R.color.purple500))
-                .build()
-                .apply {
-                    launchUrl(context, Uri.parse(url))
-                }
-        }
-    }
-
     // region Private Functions
 
     private fun getTopStoryChunkDetails(chunkIndex: Int = 0) {
