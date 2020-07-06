@@ -10,6 +10,7 @@ import androidx.ui.foundation.*
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.graphics.asImageAsset
 import androidx.ui.layout.*
+import androidx.ui.layout.ColumnScope.gravity
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
@@ -57,6 +58,7 @@ fun StoryList(stories: ModelList<HNItem>, storyClicked: (HNItem) -> Unit) {
                     storyClicked = storyClicked
                 )
             }
+            LoadingCard()
         }
     }
 }
@@ -114,7 +116,37 @@ fun BasicCard(story: HNItem, storyClicked: (HNItem) -> Unit) {
             }
         }
     }
+}
 
+@Composable
+fun LoadingCard() {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        if (AppDataStatus.loading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .height(50.dp)
+                    .width(50.dp)
+                    .padding(8.dp)
+                    .fillMaxWidth()
+                    .gravity(Alignment.CenterHorizontally)
+            )
+        } else {
+            Image(
+                asset = vectorResource(id = R.drawable.ic_launcher_foreground),
+                modifier = Modifier
+                    .height(50.dp)
+                    .width(50.dp)
+                    .padding(
+                        top = 0.dp,
+                        bottom = 8.dp,
+                        start = 8.dp,
+                        end = 8.dp
+                    )
+                    .fillMaxWidth()
+                    .gravity(Alignment.CenterHorizontally)
+            )
+        }
+    }
 }
 
 @Preview
