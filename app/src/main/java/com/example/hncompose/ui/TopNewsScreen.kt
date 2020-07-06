@@ -6,11 +6,11 @@ import androidx.ui.core.Alignment
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
+import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
 import androidx.ui.layout.RowScope.gravity
 import androidx.ui.material.*
-import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
@@ -86,45 +86,46 @@ fun BasicCard(
             .padding(start = 0.dp, end = 8.dp, top = 8.dp, bottom = 8.dp)
             .fillMaxWidth()
     ) {
-        Clickable(
-            onClick = {
-                storyOpened.invoke(story)
-            },
-            modifier = Modifier.ripple()
-        ) {
-            Row(modifier = Modifier.padding(8.dp)) {
 
-                FavoriteButton(favorite = story.favorite) {
-                    storyFavorited.invoke(story)
-                }
+        Row(modifier = Modifier.padding(8.dp)) {
 
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = story.title ?: "",
-                        style = MaterialTheme.typography.body1
-                    )
-                    Text(
-                        text = story.url.shortUrlString,
-                        style = MaterialTheme.typography.body2
-                    )
-                }
-
+            FavoriteButton(favorite = story.favorite) {
+                storyFavorited.invoke(story)
             }
-        }
 
+            Box(
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier
+                    .padding(2.dp)
+                    .clickable(onClick = {
+                        storyOpened.invoke(story)
+                    }
+                ), children = {
+                    Column(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            text = story.title ?: "",
+                            style = MaterialTheme.typography.body1
+                        )
+                        Text(
+                            text = story.url.shortUrlString,
+                            style = MaterialTheme.typography.body2
+                        )
+                    }
+                }
+            )
+        }
     }
 }
 
 @Composable
 fun FavoriteButton(favorite: Boolean, toggleFavorite: () -> Unit) {
-    TextButton(
+    IconButton(
         onClick = toggleFavorite,
         modifier = Modifier
             .padding(end = 2.dp)
-            .gravity(Alignment.CenterVertically),
-        padding = InnerPadding(0.dp)
+            .gravity(Alignment.CenterVertically)
     ) {
         if (favorite) {
             Image(

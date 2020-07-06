@@ -45,30 +45,31 @@ fun FavoritesList(stories: List<HNItem>) {
 
 @Composable
 fun FavoritesCard(story: HNItem, storyClicked: () -> Unit) {
-
-    Clickable(onClick = storyClicked) {
-        Card(
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth()
-        ) {
-            Column(
+    Box(
+        modifier = Modifier.clickable(onClick = storyClicked),
+        children = {
+            Card(
                 modifier = Modifier
-                    .fillMaxWidth()
                     .padding(8.dp)
+                    .fillMaxWidth()
             ) {
-                Text(
-                    text = story.title ?: "",
-                    style = MaterialTheme.typography.body1
-                )
-                Text(
-                    text = story.url.shortUrlString,
-                    style = MaterialTheme.typography.body2
-                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                ) {
+                    Text(
+                        text = story.title ?: "",
+                        style = MaterialTheme.typography.body1
+                    )
+                    Text(
+                        text = story.url.shortUrlString,
+                        style = MaterialTheme.typography.body2
+                    )
+                }
             }
         }
-    }
-
+    )
 }
 
 @Preview
