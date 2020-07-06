@@ -51,8 +51,6 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.2.5"
     implementation "com.google.android.material:material:1.1.0"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-    implementation "androidx.browser:browser:1.2.0"
-    implementation "com.squareup.picasso:picasso:2.71828"
 
     // Compose Dependencies
     implementation "androidx.ui:ui-framework:$compose_version"
