@@ -56,7 +56,7 @@ fun AppContent(listenerHandler: HackerNewsViewModel.HackerNewsListenerHandler) {
     JetnewsTheme {
         Scaffold(
             scaffoldState = ScaffoldState(),
-            topAppBar = {
+            topBar = {
                 TopAppBar(
                     title = { Text(text = AppScreenStatus.currentScreen.title) },
                     actions = {

@@ -1,17 +1,17 @@
 package com.example.hncompose.data
 
-import androidx.compose.Model
 import androidx.compose.frames.ModelList
 import androidx.compose.frames.modelListOf
+import androidx.compose.getValue
+import androidx.compose.mutableStateOf
+import androidx.compose.setValue
 import com.example.hackernetwork.HNItem
 import com.example.hncompose.model.Screen
 
-@Model
 object AppScreenStatus {
-    var currentScreen: Screen = Screen.TopNews
+    var currentScreen by mutableStateOf(Screen.TopNews as Screen)
 }
 
-@Model
 object AppDataStatus {
     var topStories: ModelList<HNItem> = modelListOf()
     var newStories: ModelList<HNItem> = modelListOf()
@@ -21,5 +21,5 @@ object AppDataStatus {
     var newStoryIdChunks: List<List<Int>> = emptyList()
     var jobStoryIdChunks: List<List<Int>> = emptyList()
 
-    var loading: Boolean = true
+    var loading by mutableStateOf(true)
 }
