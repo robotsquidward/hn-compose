@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="09f0c596-ecd0-43d1-a069-59095742c0b0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_4_API_30]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+        <option value="JUnit4 Test Class" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1dpEYvgeLbUiiMYjMa9OWSn8rbN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
+    <property name="DEBUGGABLE_PROCESS" value="com.example.hncompose" />
+    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/util/src/test/java/com/example/util" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1593115472795" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/FavoritesScreen.kt_selected" value="Compose" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/LandingScreen.kt_selected" value="Compose" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/MainActivity.kt_selected" value="" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/ui/FavoritesScreen.kt_selected" value="Compose" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt_selected" value="Compose" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/final/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt_selected" value="Compose" />
+    <property name="project.structure.last.edited" value="Suggestions" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/util/src/main/java/com/example/util" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/ui" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/data" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/function" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/extension" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.hncompose" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.example.hackernetwork.model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration name="StringKtTest.getShortUrlString" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HN_Compose.util" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.util" />
+      <option name="MAIN_CLASS_NAME" value="com.example.util.StringKtTest" />
+      <option name="METHOD_NAME" value="getShortUrlString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TopNewsScreenTests" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HN_Compose.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.hncompose.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.hncompose" />
+      <option name="MAIN_CLASS_NAME" value="com.example.hncompose.TopNewsScreenTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="HN_Compose.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests in 'com.example.hncompose'" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="HN_Compose.app" />
+      <option name="TESTING_TYPE" value="1" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="com.example.hncompose" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testFavoriteButton()" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="HN_Compose.app" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="METHOD_NAME" value="testFavoriteButton" />
+      <option name="CLASS_NAME" value="com.example.hncompose.TopNewsScreenTests" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="INCLUDE_GRADLE_EXTRA_OPTIONS" value="true" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FavoritesPreview" type="ComposePreviewRunConfiguration" activateToolWindowBeforeRun="false" temporary="true">
+      <module name="HN_Compose.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="--es composable com.example.hncompose.FavoritesScreenKt.FavoritesPreview" />
+      <option name="MODE" value="specific_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="androidx.ui.tooling.preview.PreviewActivity" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="true" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <compose-preview-run-configuration composable-fqn="com.example.hncompose.FavoritesScreenKt.FavoritesPreview" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android Instrumented Tests.testFavoriteButton()" />
+        <item itemvalue="Android JUnit.TopNewsScreenTests" />
+        <item itemvalue="Android Instrumented Tests.Tests in 'com.example.hncompose'" />
+        <item itemvalue="Android JUnit.StringKtTest.getShortUrlString" />
+        <item itemvalue="Compose Preview.FavoritesPreview" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="09f0c596-ecd0-43d1-a069-59095742c0b0" name="Default Changelist" comment="" />
+      <created>1593113685973</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593113685973</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="713" y="388" key="#PSD" timestamp="1594071137337">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="499" y="306" key="#PSD/0.25.1792.1095@0.25.1792.1095" timestamp="1593115911217" />
+    <state x="713" y="388" key="#PSD/0.25.2560.1415@0.25.2560.1415" timestamp="1594071137337" />
+    <state x="462" y="149" key="#Project_Structure" timestamp="1593115796142">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="462" y="149" key="#Project_Structure/0.25.1792.1095@0.25.1792.1095" timestamp="1593115796142" />
+    <state x="699" y="496" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1594070901513">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="699" y="496" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.25.2560.1415@0.25.2560.1415" timestamp="1594070901513" />
+    <state x="144" y="130" width="1363" height="847" key="AVDManager" timestamp="1594129344321">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="144" y="130" width="1363" height="847" key="AVDManager/0.25.1792.1095@0.25.1792.1095" timestamp="1594129344321" />
+    <state x="556" y="453" key="AndroidCreateResourceFileDialog" timestamp="1594045670211">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="556" y="453" key="AndroidCreateResourceFileDialog/0.25.2560.1415@0.25.2560.1415" timestamp="1594045670211" />
+    <state x="800" y="382" key="AndroidProcessChooserDialog" timestamp="1594073842687">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="560" y="301" key="AndroidProcessChooserDialog/0.25.1792.1095@0.25.1792.1095" timestamp="1593186174298" />
+    <state x="800" y="382" key="AndroidProcessChooserDialog/0.25.2560.1415@0.25.2560.1415" timestamp="1594073842687" />
+    <state width="1705" height="344" key="GridCell.Tab.0.bottom" timestamp="1594074028518">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1509" height="360" key="GridCell.Tab.0.bottom/0.25.1792.1095@0.25.1792.1095" timestamp="1593693736357" />
+    <state width="1705" height="344" key="GridCell.Tab.0.bottom/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028518" />
+    <state width="1705" height="344" key="GridCell.Tab.0.center" timestamp="1594074028517">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1509" height="360" key="GridCell.Tab.0.center/0.25.1792.1095@0.25.1792.1095" timestamp="1593693736356" />
+    <state width="1705" height="344" key="GridCell.Tab.0.center/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028517" />
+    <state width="1705" height="344" key="GridCell.Tab.0.left" timestamp="1594074028517">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1509" height="360" key="GridCell.Tab.0.left/0.25.1792.1095@0.25.1792.1095" timestamp="1593693736356" />
+    <state width="1705" height="344" key="GridCell.Tab.0.left/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028517" />
+    <state width="1705" height="344" key="GridCell.Tab.0.right" timestamp="1594074028518">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1509" height="360" key="GridCell.Tab.0.right/0.25.1792.1095@0.25.1792.1095" timestamp="1593693736356" />
+    <state width="1705" height="344" key="GridCell.Tab.0.right/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028518" />
+    <state width="1705" height="344" key="GridCell.Tab.1.bottom" timestamp="1594074028519">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1519" height="285" key="GridCell.Tab.1.bottom/0.25.1792.1095@0.25.1792.1095" timestamp="1593190872453" />
+    <state width="1705" height="344" key="GridCell.Tab.1.bottom/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028519" />
+    <state width="1705" height="344" key="GridCell.Tab.1.center" timestamp="1594074028518">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1519" height="285" key="GridCell.Tab.1.center/0.25.1792.1095@0.25.1792.1095" timestamp="1593190872452" />
+    <state width="1705" height="344" key="GridCell.Tab.1.center/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028518" />
+    <state width="1705" height="344" key="GridCell.Tab.1.left" timestamp="1594074028518">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1519" height="285" key="GridCell.Tab.1.left/0.25.1792.1095@0.25.1792.1095" timestamp="1593190872452" />
+    <state width="1705" height="344" key="GridCell.Tab.1.left/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028518" />
+    <state width="1705" height="344" key="GridCell.Tab.1.right" timestamp="1594074028518">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state width="1519" height="285" key="GridCell.Tab.1.right/0.25.1792.1095@0.25.1792.1095" timestamp="1593190872453" />
+    <state width="1705" height="344" key="GridCell.Tab.1.right/0.25.2560.1415@0.25.2560.1415" timestamp="1594074028518" />
+    <state x="397" y="208" key="SettingsEditor" timestamp="1593194615896">
+      <screen x="0" y="25" width="1792" height="1095" />
+    </state>
+    <state x="397" y="208" key="SettingsEditor/0.25.1792.1095@0.25.1792.1095" timestamp="1593194615896" />
+    <state x="748" y="476" key="chooseDestDirectoryDialog" timestamp="1594069710026">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="748" y="476" key="chooseDestDirectoryDialog/0.25.2560.1415@0.25.2560.1415" timestamp="1594069710026" />
+    <state x="953" y="255" width="879" height="950" key="find.popup" timestamp="1594068814969">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="667" y="203" width="615" height="735" key="find.popup/0.25.1792.1095@0.25.1792.1095" timestamp="1593115844071" />
+    <state x="953" y="255" width="879" height="950" key="find.popup/0.25.2560.1415@0.25.2560.1415" timestamp="1594068814969" />
+    <state x="772" y="540" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog" timestamp="1594069710066">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="772" y="540" key="org.jetbrains.kotlin.idea.testIntegration.KotlinCreateTestDialog/0.25.2560.1415@0.25.2560.1415" timestamp="1594069710066" />
+    <state x="913" y="353" width="958" height="874" key="search.everywhere.popup" timestamp="1594071384392">
+      <screen x="0" y="25" width="2560" height="1415" />
+    </state>
+    <state x="639" y="279" width="670" height="676" key="search.everywhere.popup/0.25.1792.1095@0.25.1792.1095" timestamp="1593116026007" />
+    <state x="913" y="353" width="958" height="874" key="search.everywhere.popup/0.25.2560.1415@0.25.2560.1415" timestamp="1594071384392" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="app">
+        <watch expression="TopStoryModel.storyList[index].favorite" language="kotlin" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
