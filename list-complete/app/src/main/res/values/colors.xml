@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange200">#ff8533</color>
+    <color name="orange300">#ff751a</color>
+    <color name="orange700">#ff6600</color>
+    <color name="orange800">#ff6600</color>
+    <color name="orange900">#cc5200</color>
+    <color name="blue500">#0099ff</color>
+    <color name="status_bar">@color/orange900</color>
+</resources>
