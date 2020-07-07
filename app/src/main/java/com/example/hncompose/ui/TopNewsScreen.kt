@@ -36,6 +36,11 @@ fun TopNewsScreen(
         storiesLoading = appData.loading,
         storyFavorited = { story ->
             appData.topStories = appData.topStories.toggleFavorite(story = story)
+
+            // HACK to make list refreshing work...
+            val dummy = HNItem(id = 10, url = "https://google.com", title = "Title")
+            appData.topStories.add(dummy)
+            appData.topStories.remove(dummy)
         },
         storyOpened = { story ->
             storyClicked(
