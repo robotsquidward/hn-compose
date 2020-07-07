@@ -1,4 +1,4 @@
-# HN Compose
+# Hacker News Compose
 
 Learn about the basics of [Jetpack Compose](https://www.google.com/search?client=safari&rls=en&q=jetpack+compose&ie=UTF-8&oe=UTF-8) by building a Hacker News client. Built to demonstrate a UI built on Compose with a simple [backend API](https://github.com/HackerNews/API).
 
