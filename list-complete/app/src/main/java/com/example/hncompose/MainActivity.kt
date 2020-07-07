@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
+import androidx.compose.getValue
+import androidx.compose.state
 import androidx.ui.animation.Crossfade
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Icon
@@ -18,6 +20,7 @@ import com.example.hackernetwork.HackerNewsRepo
 import com.example.hackernetwork.HackerNewsRetrofit
 import com.example.hncompose.data.AppDataStatus
 import com.example.hncompose.data.AppScreenStatus
+import com.example.hncompose.extension.mock
 import com.example.hncompose.model.Screen
 import com.example.hncompose.theme.JetnewsTheme
 import com.example.hncompose.ui.FavoritesScreen
@@ -36,7 +39,15 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun AppContent() {
-    TopNewsScreen()
+    Scaffold(
+        topAppBar = {
+            TopAppBar(title = {
+                Text("Hacker Compose")
+            })
+        }
+    ) {
+        TopNewsScreen(appData = AppDataStatus.mock())
+    }
 }
 
 @Preview

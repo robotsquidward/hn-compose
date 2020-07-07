@@ -25,10 +25,12 @@ import com.example.util.shortUrlString
 
 
 @Composable
-fun TopNewsScreen() {
+fun TopNewsScreen(appData: AppDataStatus) {
     VerticalScroller {
         Column {
-            StoryCard("Item Title")
+            for (story in appData.topStories) {
+                StoryCard(story.title ?: "")
+            }
         }
     }
 }
@@ -47,5 +49,5 @@ fun StoryCard(title: String) {
 @Preview
 @Composable
 fun LandingScreenPreview() {
-    TopNewsScreen()
+    TopNewsScreen(AppDataStatus.mock())
 }
