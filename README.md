@@ -10,6 +10,7 @@ There is some pre-work for this session to get up and started. This course expec
 
 1. Download [Android Studio **Canary**, 4.2](https://developer.android.com/studio/preview)
 1. In Android Studio 4.2, use the AVD Manager to [create an Android emulated device](https://developer.android.com/studio/run/managing-avds#createavd). Use API 29 or later.
-1. Clone this repository
+1. Fork this repository to your own username on GitHub
+1. Clone your fork
 
 You can test out the basic starting point by opening the `start` directory in Android Studio.
