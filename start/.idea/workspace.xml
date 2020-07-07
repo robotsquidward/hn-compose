@@ -43,8 +43,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09f0c596-ecd0-43d1-a069-59095742c0b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../final/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/ui/FavoritesScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/ui/FavoritesScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +86,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
     <property name="DEBUGGABLE_PROCESS" value="com.example.hncompose" />
     <property name="DEBUGGER_ID" value="Auto" />
@@ -99,6 +103,8 @@
     <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/MainActivity.kt_selected" value="" />
     <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/ui/FavoritesScreen.kt_selected" value="Compose" />
     <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt_selected" value="Compose" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/start/app/src/main/java/com/example/hncompose/MainActivity.kt_selected" value="Compose" />
+    <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/start/app/src/main/java/com/example/hncompose/ui/FavoritesScreen.kt_selected" value="Compose" />
     <property name="multi-representation-preview/Users/ajkueterman/Development/hn-compose/start/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt_selected" value="Compose" />
     <property name="project.structure.last.edited" value="Suggestions" />
     <property name="project.structure.proportion" value="0.17" />
