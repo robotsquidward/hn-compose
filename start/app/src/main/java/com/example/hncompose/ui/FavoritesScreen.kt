@@ -16,65 +16,12 @@ import com.example.hncompose.theme.JetnewsTheme
 import com.example.util.shortUrlString
 
 @Composable
-fun FavoritesScreen(appData: AppDataStatus) {
-    FavoritesList(
-        stories = appData.topStories.filter { it.favorite }
-    )
-}
-
-@Composable
-fun FavoritesList(stories: List<HNItem>) {
-    val context = ContextAmbient.current
-
-    VerticalScroller {
-        Column {
-            for (story in stories) {
-                FavoritesCard(
-                    story = story,
-                    storyClicked = {
-                        storyClicked(
-                            url = story.url,
-                            context = context
-                        )
-                    }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun FavoritesCard(story: HNItem, storyClicked: () -> Unit) {
-
-    Clickable(onClick = storyClicked) {
-        Card(
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth()
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
-                Text(
-                    text = story.title ?: "",
-                    style = MaterialTheme.typography.body1
-                )
-                Text(
-                    text = story.url.shortUrlString,
-                    style = MaterialTheme.typography.body2
-                )
-            }
-        }
-    }
-
+fun FavoritesScreen() {
+    Text("Favorites... coming soon.")
 }
 
 @Preview
 @Composable
 fun FavoritesPreview() {
-    JetnewsTheme {
-        FavoritesScreen(AppDataStatus.mock())
-    }
+    FavoritesScreen()
 }
