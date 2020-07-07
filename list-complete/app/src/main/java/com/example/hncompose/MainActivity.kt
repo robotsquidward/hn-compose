@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun AppContent() {
-    Text("Hello World!")
+    TopNewsScreen()
 }
 
 @Preview

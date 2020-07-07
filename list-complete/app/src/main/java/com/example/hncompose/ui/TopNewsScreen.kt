@@ -26,7 +26,22 @@ import com.example.util.shortUrlString
 
 @Composable
 fun TopNewsScreen() {
-    Text("Top News... coming soon.")
+    VerticalScroller {
+        Column {
+            StoryCard("Item Title")
+        }
+    }
+}
+
+@Composable
+fun StoryCard(title: String) {
+    Card(modifier = Modifier.padding(8.dp)) {
+        Text(
+            text = title,
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth())
+    }
 }
 
 @Preview
