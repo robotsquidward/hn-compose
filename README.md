@@ -14,3 +14,7 @@ There is some pre-work for this session to get up and started. This course expec
 1. Clone your fork
 
 You can test out the basic starting point by opening the `start` directory in Android Studio.
+
+## Help
+
+If you need help with setting up your project prior to the session (July 9, 2020) feel free to drop an [Issue](https://github.com/robotsquidward/hn-compose/issues) in this project using the **question** Label.
