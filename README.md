@@ -18,3 +18,9 @@ You can test out the basic starting point by opening the `start` directory in An
 ## Help
 
 If you need help with setting up your project prior to the session (July 9, 2020) feel free to drop an [Issue](https://github.com/robotsquidward/hn-compose/issues) in this project using the **question** Label. Or just hit me up on Teams.
+
+## Resources
+
+* [Compose Release Notes](https://developer.android.com/jetpack/androidx/releases/ui)
+* [JetNews Sample App](https://github.com/android/compose-samples/tree/master/JetNews)
+* [Kotlin Lang Slack](https://kotlinlang.slack.com)
