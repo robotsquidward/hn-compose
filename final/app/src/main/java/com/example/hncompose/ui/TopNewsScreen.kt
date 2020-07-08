@@ -35,9 +35,9 @@ fun TopNewsScreen(
         stories = appData.topStories,
         storiesLoading = appData.loading,
         storyFavorited = { story ->
-            appData.topStories = appData.topStories.toggleFavorite(story = story)
+            appData.topStories.toggleFavorite(story = story)
         },
-        storyOpened = { story ->
+        storyClicked = { story ->
             storyClicked(
                 url = story.url,
                 context = context
@@ -52,7 +52,7 @@ fun TopNewsScreen(
 fun StoryList(
     stories: ModelList<HNItem>,
     storiesLoading: Boolean,
-    storyOpened: (HNItem) -> Unit,
+    storyClicked: (HNItem) -> Unit,
     storyFavorited: (HNItem) -> Unit,
     loadMoreCardClicked: () -> Unit
 ) {
@@ -61,8 +61,8 @@ fun StoryList(
             for (story in stories) {
                 BasicCard(
                     story = story,
-                    storyOpened = storyOpened,
-                    storyFavorited = storyFavorited
+                    storyClicked = { storyClicked.invoke(story) },
+                    storyFavorited = { storyFavorited.invoke(story) }
                 )
             }
             LoadingCard(
@@ -77,8 +77,8 @@ fun StoryList(
 @Composable
 fun BasicCard(
     story: HNItem,
-    storyFavorited: (HNItem) -> Unit,
-    storyOpened: (HNItem) -> Unit
+    storyFavorited: () -> Unit,
+    storyClicked: () -> Unit
 ) {
 
     Card(
@@ -87,16 +87,16 @@ fun BasicCard(
             .fillMaxWidth()
     ) {
         Clickable(
-            onClick = {
-                storyOpened.invoke(story)
-            },
+            onClick = storyClicked,
             modifier = Modifier.ripple()
         ) {
             Row(modifier = Modifier.padding(8.dp)) {
 
-                FavoriteButton(favorite = story.favorite) {
-                    storyFavorited.invoke(story)
-                }
+                FavoriteButton(
+                    favorite = story.favorite,
+                    storyFavorited = storyFavorited
+                )
+
 
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -118,13 +118,12 @@ fun BasicCard(
 }
 
 @Composable
-fun FavoriteButton(favorite: Boolean, toggleFavorite: () -> Unit) {
-    TextButton(
-        onClick = toggleFavorite,
+fun FavoriteButton(favorite: Boolean, storyFavorited: () -> Unit) {
+    IconButton(
+        onClick = storyFavorited,
         modifier = Modifier
             .padding(end = 2.dp)
-            .gravity(Alignment.CenterVertically),
-        padding = InnerPadding(0.dp)
+            .gravity(Alignment.CenterVertically)
     ) {
         if (favorite) {
             Image(

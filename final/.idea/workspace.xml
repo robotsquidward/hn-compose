@@ -43,7 +43,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09f0c596-ecd0-43d1-a069-59095742c0b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../start/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../start/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/extension/List.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/extension/List.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/hncompose/ui/TopNewsScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
