@@ -35,7 +35,7 @@ fun TopNewsScreen(appData: AppDataStatus) {
                         // todo -> display article contents
                     },
                     storyFavorited = {
-                        appData.topStories = appData.topStories.toggleFavorite(story = story)
+                        appData.topStories.toggleFavorite(story = story)
                     }
                 )
             }
