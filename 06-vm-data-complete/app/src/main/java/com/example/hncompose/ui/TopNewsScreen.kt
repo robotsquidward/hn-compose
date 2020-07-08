@@ -21,21 +21,34 @@ import com.example.hncompose.extension.mock
 import com.example.hncompose.extension.toggleFavorite
 import com.example.hncompose.theme.HackerNewsTheme
 import com.example.util.shortUrlString
+import com.example.util.storyClicked
 
 
 @Composable
 fun TopNewsScreen(appData: AppDataStatus) {
+    val context = ContextAmbient.current
+
     VerticalScroller {
-        Column {
+        Column(modifier = Modifier.fillMaxWidth()) {
             for (story in appData.topStories) {
                 StoryCard(
                     story = story,
                     storySelected =  {
-                        // todo -> display article contents
+                        storyClicked(url = story.url, context = context)
                     },
                     storyFavorited = {
                         appData.topStories.toggleFavorite(story = story)
                     }
+                )
+            }
+            if (appData.loading) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .height(50.dp)
+                        .width(50.dp)
+                        .padding(8.dp)
+                        .fillMaxWidth()
+                        .gravity(Alignment.CenterHorizontally)
                 )
             }
         }

@@ -15,14 +15,16 @@ import com.example.hncompose.data.AppDataStatus
 import com.example.hncompose.extension.mock
 import com.example.hncompose.theme.HackerNewsTheme
 import com.example.util.shortUrlString
+import com.example.util.storyClicked
 
 @Composable
 fun FavoritesScreen(appData: AppDataStatus) {
+    val context = ContextAmbient.current
     VerticalScroller {
         Column {
             for (story in appData.topStories.filter { it.favorite }) {
                 FavoriteCard(favorite = story) {
-                    // todo -> display article contents
+                    storyClicked(url = story.url, context = context)
                 }
             }
         }
