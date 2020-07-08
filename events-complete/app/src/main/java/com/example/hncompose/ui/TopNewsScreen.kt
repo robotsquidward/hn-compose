@@ -59,19 +59,11 @@ fun StoryCard(
             modifier = Modifier.ripple()
         ) {
             Row {
-                IconButton(onClick = storyFavorited) {
-                    if (story.favorite) {
-                        Image(
-                            asset = vectorResource(id = R.drawable.ic_baseline_star_24),
-                            colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
-                        )
-                    } else {
-                        Image(
-                            asset = vectorResource(id = R.drawable.ic_baseline_star_border_24),
-                            colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
-                        )
-                    }
-                }
+
+                FavoriteButton(
+                    favorite = story.favorite,
+                    storyFavorited = storyFavorited
+                )
 
                 Column(
                     modifier = Modifier
@@ -84,7 +76,23 @@ fun StoryCard(
             }
         }
     }
+}
 
+@Composable
+fun FavoriteButton(favorite: Boolean, storyFavorited: () -> Unit) {
+    IconButton(onClick = storyFavorited) {
+        if (favorite) {
+            Image(
+                asset = vectorResource(id = R.drawable.ic_baseline_star_24),
+                colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
+            )
+        } else {
+            Image(
+                asset = vectorResource(id = R.drawable.ic_baseline_star_border_24),
+                colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
+            )
+        }
+    }
 }
 
 @Preview
