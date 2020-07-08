@@ -1,15 +1,16 @@
 package com.example.hncompose.ui
 
 import androidx.compose.Composable
-import androidx.compose.frames.ModelList
 import androidx.ui.core.Alignment
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
+import androidx.ui.foundation.Clickable
+import androidx.ui.foundation.Image
+import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
 import androidx.ui.layout.ColumnScope.gravity
-import androidx.ui.layout.RowScope.gravity
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
