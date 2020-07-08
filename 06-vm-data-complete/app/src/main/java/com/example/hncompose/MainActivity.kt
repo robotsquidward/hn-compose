@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             HackerNewsTheme {
-                AppContent()
+                AppContent(hackerNewsViewModel.listenerHandler.handleLoadMoreTopStories)
             }
         }
 
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun AppContent() {
+fun AppContent(loadMoreStoriesClicked: () -> Unit) {
     Scaffold(
         topAppBar = {
             TopAppBar(
@@ -86,7 +86,7 @@ fun AppContent() {
     ) {
         Crossfade(current = AppScreenStatus.currentScreen) { state ->
             when (state) {
-                Screen.TopNews -> TopNewsScreen(appData = AppDataStatus)
+                Screen.TopNews -> TopNewsScreen(appData = AppDataStatus, loadMoreStoriesClicked = loadMoreStoriesClicked)
                 Screen.Favorites -> FavoritesScreen(appData = AppDataStatus)
             }
         }
@@ -97,6 +97,6 @@ fun AppContent() {
 @Composable
 fun PreviewMain() {
     HackerNewsTheme {
-        AppContent()
+        AppContent {}
     }
 }

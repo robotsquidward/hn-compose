@@ -60,7 +60,6 @@ fun FavoriteCard(favorite: HNItem, favoriteClicked: () -> Unit) {
     }
 }
 
-
 @Preview
 @Composable
 fun FavoritesPreview() {

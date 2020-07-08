@@ -8,6 +8,7 @@ import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
+import androidx.ui.layout.ColumnScope.gravity
 import androidx.ui.layout.RowScope.gravity
 import androidx.ui.material.*
 import androidx.ui.material.ripple.ripple
@@ -25,7 +26,7 @@ import com.example.util.storyClicked
 
 
 @Composable
-fun TopNewsScreen(appData: AppDataStatus) {
+fun TopNewsScreen(appData: AppDataStatus, loadMoreStoriesClicked: () -> Unit) {
     val context = ContextAmbient.current
 
     VerticalScroller {
@@ -41,16 +42,11 @@ fun TopNewsScreen(appData: AppDataStatus) {
                     }
                 )
             }
-            if (appData.loading) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .height(50.dp)
-                        .width(50.dp)
-                        .padding(8.dp)
-                        .fillMaxWidth()
-                        .gravity(Alignment.CenterHorizontally)
-                )
-            }
+
+            LoadingCard(
+                storiesLoaded = appData.topStories.isNotEmpty(),
+                storiesLoading = appData.loading,
+                loadMoreStoriesClicked = loadMoreStoriesClicked)
         }
     }
 }
@@ -113,10 +109,38 @@ fun FavoriteButton(favorite: Boolean, storyFavorited: () -> Unit) {
     }
 }
 
+@Composable
+fun LoadingCard(
+    storiesLoaded: Boolean,
+    storiesLoading: Boolean,
+    loadMoreStoriesClicked: () -> Unit) {
+
+    if (storiesLoading) {
+        CircularProgressIndicator(
+            modifier = Modifier
+                .height(50.dp)
+                .width(50.dp)
+                .padding(8.dp)
+                .fillMaxWidth()
+                .gravity(Alignment.CenterHorizontally)
+        )
+    } else if (storiesLoaded) {
+        Button(
+            text = {
+                Text(text = "Load More")
+            },
+            onClick = loadMoreStoriesClicked,
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth()
+        )
+    }
+}
+
 @Preview
 @Composable
 fun LandingScreenPreview() {
     HackerNewsTheme {
-        TopNewsScreen(AppDataStatus.mock())
+        TopNewsScreen(AppDataStatus.mock(), {})
     }
 }
