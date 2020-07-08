@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun AppContent() {
     val screenStatus by state { AppScreenStatus }
+    val appDataStatus by state { AppDataStatus.mock() }
 
     Scaffold(
         topAppBar = {
@@ -67,8 +68,8 @@ fun AppContent() {
     ) {
         Crossfade(current = screenStatus.currentScreen) { state ->
             when (state) {
-                Screen.TopNews -> TopNewsScreen(appData = AppDataStatus.mock())
-                Screen.Favorites -> FavoritesScreen()
+                Screen.TopNews -> TopNewsScreen(appData = appDataStatus)
+                Screen.Favorites -> FavoritesScreen(appData = appDataStatus)
             }
         }
     }
