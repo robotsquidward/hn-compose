@@ -1,6 +1,7 @@
 package com.example.hncompose
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.getValue
@@ -15,6 +16,8 @@ import androidx.ui.material.Scaffold
 import androidx.ui.material.TopAppBar
 import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
+import com.example.hackernetwork.HackerNewsRepo
+import com.example.hackernetwork.HackerNewsRetrofit
 import com.example.hncompose.data.AppDataStatus
 import com.example.hncompose.data.AppScreenStatus
 import com.example.hncompose.extension.mock
@@ -22,8 +25,20 @@ import com.example.hncompose.model.Screen
 import com.example.hncompose.theme.HackerNewsTheme
 import com.example.hncompose.ui.FavoritesScreen
 import com.example.hncompose.ui.TopNewsScreen
+import com.example.hncompose.viewmodel.HackerNewsViewModel
+import com.example.util.createWithFactory
 
 class MainActivity : AppCompatActivity() {
+
+    private val hackerNewsViewModel: HackerNewsViewModel by viewModels {
+        createWithFactory {
+            HackerNewsViewModel(
+                repo = HackerNewsRepo(
+                    HackerNewsRetrofit.retrofitInstance
+                )
+            )
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,15 +47,14 @@ class MainActivity : AppCompatActivity() {
                 AppContent()
             }
         }
+
+        hackerNewsViewModel.getTopStories()
     }
 
 }
 
 @Composable
 fun AppContent() {
-    val screenStatus by state { AppScreenStatus }
-    val appDataStatus by state { AppDataStatus.mock() }
-
     Scaffold(
         topAppBar = {
             TopAppBar(
@@ -48,18 +62,18 @@ fun AppContent() {
                     Text("Hacker Compose") 
                 },
                 actions = {
-                    Crossfade(current = screenStatus.currentScreen) { state ->
+                    Crossfade(current = AppScreenStatus.currentScreen) { state ->
                         when(state) {
                             Screen.TopNews -> {
                                 IconButton(onClick = {
-                                    screenStatus.currentScreen = Screen.Favorites
+                                    AppScreenStatus.currentScreen = Screen.Favorites
                                 }) {
                                     Image(asset = vectorResource(id = R.drawable.ic_baseline_star_24))
                                 }
                             }
                             Screen.Favorites -> {
                                 IconButton(onClick = {
-                                    screenStatus.currentScreen = Screen.TopNews
+                                    AppScreenStatus.currentScreen = Screen.TopNews
                                 }) {
                                     Image(asset = vectorResource(id = R.drawable.ic_baseline_home_24))
                                 }
@@ -70,10 +84,10 @@ fun AppContent() {
             )
         }
     ) {
-        Crossfade(current = screenStatus.currentScreen) { state ->
+        Crossfade(current = AppScreenStatus.currentScreen) { state ->
             when (state) {
-                Screen.TopNews -> TopNewsScreen(appData = appDataStatus)
-                Screen.Favorites -> FavoritesScreen(appData = appDataStatus)
+                Screen.TopNews -> TopNewsScreen(appData = AppDataStatus)
+                Screen.Favorites -> FavoritesScreen(appData = AppDataStatus)
             }
         }
     }

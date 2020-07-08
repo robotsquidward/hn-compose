@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun AppContent() {
-    val screenStatus by state { AppScreenStatus }
-    val appDataStatus by state { AppDataStatus.mock() }
+    AppDataStatus.mock()
 
     Scaffold(
         topAppBar = {
@@ -44,18 +43,18 @@ fun AppContent() {
                     Text("Hacker Compose") 
                 },
                 actions = {
-                    Crossfade(current = screenStatus.currentScreen) { state ->
+                    Crossfade(current = AppScreenStatus.currentScreen) { state ->
                         when(state) {
                             Screen.TopNews -> {
                                 IconButton(onClick = {
-                                    screenStatus.currentScreen = Screen.Favorites
+                                    AppScreenStatus.currentScreen = Screen.Favorites
                                 }) {
                                     Image(asset = vectorResource(id = R.drawable.ic_baseline_star_24))
                                 }
                             }
                             Screen.Favorites -> {
                                 IconButton(onClick = {
-                                    screenStatus.currentScreen = Screen.TopNews
+                                    AppScreenStatus.currentScreen = Screen.TopNews
                                 }) {
                                     Image(asset = vectorResource(id = R.drawable.ic_baseline_home_24))
                                 }
@@ -66,10 +65,10 @@ fun AppContent() {
             )
         }
     ) {
-        Crossfade(current = screenStatus.currentScreen) { state ->
+        Crossfade(current = AppScreenStatus.currentScreen) { state ->
             when (state) {
-                Screen.TopNews -> TopNewsScreen(appData = appDataStatus)
-                Screen.Favorites -> FavoritesScreen(appData = appDataStatus)
+                Screen.TopNews -> TopNewsScreen(appData = AppDataStatus)
+                Screen.Favorites -> FavoritesScreen(appData = AppDataStatus)
             }
         }
     }
