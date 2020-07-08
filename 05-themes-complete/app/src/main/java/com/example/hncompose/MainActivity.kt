@@ -10,6 +10,7 @@ import androidx.ui.core.setContent
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.material.IconButton
+import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Scaffold
 import androidx.ui.material.TopAppBar
 import androidx.ui.res.vectorResource
@@ -18,6 +19,7 @@ import com.example.hncompose.data.AppDataStatus
 import com.example.hncompose.data.AppScreenStatus
 import com.example.hncompose.extension.mock
 import com.example.hncompose.model.Screen
+import com.example.hncompose.theme.HackerNewsTheme
 import com.example.hncompose.ui.FavoritesScreen
 import com.example.hncompose.ui.TopNewsScreen
 
@@ -26,7 +28,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AppContent()
+            HackerNewsTheme {
+                AppContent()
+            }
         }
     }
 
@@ -78,5 +82,7 @@ fun AppContent() {
 @Preview
 @Composable
 fun PreviewMain() {
-    AppContent()
+    HackerNewsTheme {
+        AppContent()
+    }
 }

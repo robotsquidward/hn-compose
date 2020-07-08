@@ -13,9 +13,7 @@ import androidx.ui.unit.dp
 import com.example.hackernetwork.HNItem
 import com.example.hncompose.data.AppDataStatus
 import com.example.hncompose.extension.mock
-import com.example.hncompose.extension.toggleFavorite
-import com.example.util.storyClicked
-import com.example.hncompose.theme.JetnewsTheme
+import com.example.hncompose.theme.HackerNewsTheme
 import com.example.util.shortUrlString
 
 @Composable
@@ -46,8 +44,14 @@ fun FavoriteCard(favorite: HNItem, favoriteClicked: () -> Unit) {
                     .padding(8.dp)
                     .fillMaxWidth()
             ) {
-                Text(text = favorite.title ?: "")
-                Text(text = favorite.url ?: "")
+                Text(
+                    text = favorite.title ?: "",
+                    style = MaterialTheme.typography.body1
+                )
+                Text(
+                    text = favorite.url.shortUrlString,
+                    style = MaterialTheme.typography.body2
+                )
             }
 
         }
@@ -58,5 +62,7 @@ fun FavoriteCard(favorite: HNItem, favoriteClicked: () -> Unit) {
 @Preview
 @Composable
 fun FavoritesPreview() {
-    FavoritesScreen(appData = AppDataStatus.mock())
+    HackerNewsTheme {
+        FavoritesScreen(appData = AppDataStatus.mock())
+    }
 }

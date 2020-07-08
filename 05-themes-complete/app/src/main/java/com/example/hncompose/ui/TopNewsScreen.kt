@@ -18,9 +18,8 @@ import com.example.hackernetwork.HNItem
 import com.example.hncompose.R
 import com.example.hncompose.data.AppDataStatus
 import com.example.hncompose.extension.mock
-import com.example.util.storyClicked
 import com.example.hncompose.extension.toggleFavorite
-import com.example.hncompose.theme.JetnewsTheme
+import com.example.hncompose.theme.HackerNewsTheme
 import com.example.util.shortUrlString
 
 
@@ -70,8 +69,14 @@ fun StoryCard(
                         .padding(8.dp)
                         .fillMaxWidth()
                 ) {
-                    Text(text = story.title ?: "")
-                    Text(text = story.url ?: "")
+                    Text(
+                        text = story.title ?: "",
+                        style = MaterialTheme.typography.body1
+                    )
+                    Text(
+                        text = story.url.shortUrlString,
+                        style = MaterialTheme.typography.body2
+                    )
                 }
             }
         }
@@ -98,5 +103,7 @@ fun FavoriteButton(favorite: Boolean, storyFavorited: () -> Unit) {
 @Preview
 @Composable
 fun LandingScreenPreview() {
-    TopNewsScreen(AppDataStatus.mock())
+    HackerNewsTheme {
+        TopNewsScreen(AppDataStatus.mock())
+    }
 }

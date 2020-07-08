@@ -48,7 +48,7 @@ val ColorPalette.snackbarAction: Color
     get() = if (isLight) Orange300 else Orange700
 
 @Composable
-fun JetnewsTheme(
+fun HackerNewsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable() () -> Unit
 ) {
