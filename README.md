@@ -21,6 +21,7 @@ If you need help with setting up your project prior to the session (July 9, 2020
 
 ## Resources
 
+* [Jetpack Compose Basics](https://developer.android.com/jetpack/compose/tutorial)
 * [Compose Release Notes](https://developer.android.com/jetpack/androidx/releases/ui)
 * [JetNews Sample App](https://github.com/android/compose-samples/tree/master/JetNews)
 * [Kotlin Lang Slack](https://kotlinlang.slack.com)
