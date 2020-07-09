@@ -24,3 +24,10 @@ If you need help with setting up your project prior to the session (July 9, 2020
 * [Compose Release Notes](https://developer.android.com/jetpack/androidx/releases/ui)
 * [JetNews Sample App](https://github.com/android/compose-samples/tree/master/JetNews)
 * [Kotlin Lang Slack](https://kotlinlang.slack.com)
+
+#### Talks
+
+* [Jetpack Compose, 11 Weeks of Android 2020](https://www.youtube.com/watch?v=U5BwfqBpiWU&t=1262s)
+* [What's New in Jetpack Compose, ADS 2019](https://www.youtube.com/watch?v=dtm2h-_sNDQ&t=2061s)
+* [Understanding Compose, ADS 2019](https://www.youtube.com/watch?v=Q9MtlmmN4Q0)
+* [Declarative UI Patterns, I/O 2019](https://www.youtube.com/watch?v=VsStyq4Lzxo)
