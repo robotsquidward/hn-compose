@@ -13,6 +13,13 @@ This app is a companion to a talk/course about getting started with Jetpack Comp
 
 You can test out the basic starting point by opening the `start` directory in Android Studio and running it in your newly-created emulator. Each subsequent module is the final state of a given module in the original presentation - but nicely act as touchstones along the development path to the fully-featured app.
 
+### Setup Quirks
+
+We're talking about a rapidly changing framework, coupled with a rapidly changing IDE to run it all - there's going to be some hiccups. I'll try to keep the readme up to date with some pitfalls and workarounds.
+
+* You may need to also download the API 30 Platform SDK. To do this, open the SDK Manager and under the SKD Platforms tab select the Android 11 (API 30) checkbox and Apply/Save to download.
+* After Syncing, you may be prompted to download platform tools 29.0.2 - click the link that shows up in the Build Output pane to download.
+
 ## Resources
 
 * [Jetpack Compose Basics](https://developer.android.com/jetpack/compose/tutorial)
