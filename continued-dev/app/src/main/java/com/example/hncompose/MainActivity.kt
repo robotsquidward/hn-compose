@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun AppContent(loadMoreStoriesClicked: () -> Unit) {
     Scaffold(
-        topAppBar = {
+        topBar = {
             TopAppBar(
                 title = { 
                     Text("Hacker Compose") 

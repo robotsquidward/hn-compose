@@ -53,7 +53,6 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     // Compose Dependencies
-    implementation "androidx.ui:ui-framework:$compose_version"
     implementation "androidx.ui:ui-layout:$compose_version"
     implementation "androidx.ui:ui-material:$compose_version"
     implementation "androidx.ui:ui-tooling:$compose_version"

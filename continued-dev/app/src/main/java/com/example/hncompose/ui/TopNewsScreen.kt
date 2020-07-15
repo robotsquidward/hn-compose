@@ -4,15 +4,11 @@ import androidx.compose.Composable
 import androidx.ui.core.Alignment
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.Clickable
-import androidx.ui.foundation.Image
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
+import androidx.ui.foundation.*
 import androidx.ui.graphics.ColorFilter
 import androidx.ui.layout.*
 import androidx.ui.layout.ColumnScope.gravity
 import androidx.ui.material.*
-import androidx.ui.material.ripple.ripple
 import androidx.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
@@ -63,33 +59,33 @@ fun StoryCard(
         .padding(8.dp)
         .fillMaxWidth()) {
 
-        Clickable(
-            onClick = storySelected,
-            modifier = Modifier.ripple()
-        ) {
-            Row {
+        Box(
+            modifier = Modifier.clickable(onClick = storySelected),
+            children = {
+                Row {
 
-                FavoriteButton(
-                    favorite = story.favorite,
-                    storyFavorited = storyFavorited
-                )
+                    FavoriteButton(
+                        favorite = story.favorite,
+                        storyFavorited = storyFavorited
+                    )
 
-                Column(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth()
-                ) {
-                    Text(
-                        text = story.title ?: "",
-                        style = MaterialTheme.typography.body1
-                    )
-                    Text(
-                        text = story.url.shortUrlString,
-                        style = MaterialTheme.typography.body2
-                    )
+                    Column(
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth()
+                    ) {
+                        Text(
+                            text = story.title ?: "",
+                            style = MaterialTheme.typography.body1
+                        )
+                        Text(
+                            text = story.url.shortUrlString,
+                            style = MaterialTheme.typography.body2
+                        )
+                    }
                 }
             }
-        }
+        )
     }
 }
 

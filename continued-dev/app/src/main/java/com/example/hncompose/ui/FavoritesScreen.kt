@@ -36,26 +36,25 @@ fun FavoriteCard(favorite: HNItem, favoriteClicked: () -> Unit) {
         .padding(8.dp)
         .fillMaxWidth()) {
 
-        Clickable(
-            onClick = favoriteClicked,
-            modifier = Modifier.ripple()
-        ) {
-            Column(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = favorite.title ?: "",
-                    style = MaterialTheme.typography.body1
-                )
-                Text(
-                    text = favorite.url.shortUrlString,
-                    style = MaterialTheme.typography.body2
-                )
+        Box(
+            modifier = Modifier.clickable(onClick = favoriteClicked),
+            children = {
+                Column(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        text = favorite.title ?: "",
+                        style = MaterialTheme.typography.body1
+                    )
+                    Text(
+                        text = favorite.url.shortUrlString,
+                        style = MaterialTheme.typography.body2
+                    )
+                }
             }
-
-        }
+        )
     }
 }
 
