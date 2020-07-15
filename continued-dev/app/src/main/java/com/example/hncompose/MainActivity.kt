@@ -3,7 +3,7 @@ package com.example.hncompose
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.Composable
+import androidx.compose.*
 import androidx.ui.animation.Crossfade
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Image
@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun AppContent(loadMoreStoriesClicked: () -> Unit) {
+    val screenState = remember { AppScreenStatus() }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -58,18 +60,18 @@ fun AppContent(loadMoreStoriesClicked: () -> Unit) {
                     Text("Hacker Compose") 
                 },
                 actions = {
-                    Crossfade(current = AppScreenStatus.currentScreen) { state ->
+                    Crossfade(current = screenState.currentScreen) { state ->
                         when(state) {
                             Screen.TopNews -> {
                                 IconButton(onClick = {
-                                    AppScreenStatus.currentScreen = Screen.Favorites
+                                    screenState.currentScreen = Screen.Favorites
                                 }) {
                                     Image(asset = vectorResource(id = R.drawable.ic_baseline_star_24))
                                 }
                             }
                             Screen.Favorites -> {
                                 IconButton(onClick = {
-                                    AppScreenStatus.currentScreen = Screen.TopNews
+                                    screenState.currentScreen = Screen.TopNews
                                 }) {
                                     Image(asset = vectorResource(id = R.drawable.ic_baseline_home_24))
                                 }
@@ -80,7 +82,7 @@ fun AppContent(loadMoreStoriesClicked: () -> Unit) {
             )
         }
     ) {
-        Crossfade(current = AppScreenStatus.currentScreen) { state ->
+        Crossfade(current = screenState.currentScreen) { state ->
             when (state) {
                 Screen.TopNews -> TopNewsScreen(appData = AppDataStatus, loadMoreStoriesClicked = loadMoreStoriesClicked)
                 Screen.Favorites -> FavoritesScreen(appData = AppDataStatus)

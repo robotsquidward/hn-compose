@@ -2,11 +2,14 @@ package com.example.hncompose.data
 
 import androidx.compose.frames.ModelList
 import androidx.compose.frames.modelListOf
+import androidx.compose.getValue
+import androidx.compose.mutableStateOf
+import androidx.compose.setValue
 import com.example.hackernetwork.HNItem
 import com.example.hncompose.model.Screen
 
-object AppScreenStatus {
-    var currentScreen: Screen = Screen.TopNews
+class AppScreenStatus {
+    var currentScreen by mutableStateOf(Screen.TopNews)
 }
 
 object AppDataStatus {
